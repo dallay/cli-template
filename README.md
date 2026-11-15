@@ -53,40 +53,38 @@ The binary will be in `target/release/{{CARGO_NAME}}`.
 ### Prerequisites
 
 - Rust 1.70+ (stable)
-- [Make](https://www.gnu.org/software/make/) or [Just](https://just.systems/)
-
-This project includes both a `Makefile` and a `justfile` with the same commands. Use whichever you prefer — `make <command>` or `just <command>`.
+- Make
 
 ### Quick Start
 
 ```bash
 # Full setup (install hooks + build)
-make setup    # or: just setup
+make setup
 
 # Run all checks (fmt + clippy + test)
-make check    # or: just check
+make check
 
 # Build release binary
-make release  # or: just release
+make release
 ```
 
-### Build Commands
+### Makefile Commands
 
 | Command | Description |
 |---------|-------------|
-| `make setup` / `just setup` | Install dev dependencies and git hooks |
-| `make build` / `just build` | Build debug binary |
-| `make release` / `just release` | Build optimized release binary |
-| `make run` / `just run` | Run the CLI |
-| `make test` / `just test` | Run all tests |
-| `make lint` / `just lint` | Run clippy with strict warnings |
-| `make fmt` / `just fmt` | Format all Rust code |
-| `make check` / `just check` | Run fmt + lint + test (full CI locally) |
-| `make docker-build` / `just docker-build` | Build Docker image |
-| `make docker-run` / `just docker-run` | Run Docker container |
-| `make clean` / `just clean` | Remove build artifacts |
+| `make setup` | Install dev dependencies and git hooks |
+| `make build` | Build debug binary |
+| `make release` | Build optimized release binary |
+| `make run` | Run the CLI |
+| `make test` | Run all tests |
+| `make lint` | Run clippy with strict warnings |
+| `make fmt` | Format all Rust code |
+| `make check` | Run fmt + lint + test (full CI locally) |
+| `make docker-build` | Build Docker image |
+| `make docker-run` | Run Docker container |
+| `make clean` | Remove build artifacts |
 
-Run `make help` or `just help` for the full list of commands.
+Run `make help` for the full list of commands.
 
 ### Git Hooks
 
@@ -98,7 +96,7 @@ cargo install lefthook
 lefthook install
 ```
 
-Or simply run `make hooks-install` or `just hooks-install`.
+Or simply run `make hooks-install`.
 
 ## License
 
