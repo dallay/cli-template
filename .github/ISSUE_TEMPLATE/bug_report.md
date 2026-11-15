@@ -3,6 +3,7 @@ name: Bug Report
 description: Create a report to help us improve
 title: "[Bug]: "
 labels: ["bug"]
+about: "Create a report to help us improve"
 assignees: []
 ---
 
