@@ -4,14 +4,10 @@ on:
   push:
     branches: [main]
 
-permissions:
-  contents: write
-  pull-requests: write
-  packages: write
-  id-token: write
-
 jobs:
   release-please:
+    permissions:
+      pull-requests: write
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
@@ -58,6 +54,8 @@ jobs:
   upload-assets:
     needs: [release-please, build-binaries]
     if: needs.release-please.outputs.release_created == 'true'
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -73,6 +71,8 @@ jobs:
   publish-crates:
     needs: [release-please, build-binaries]
     if: needs.release-please.outputs.release_created == 'true'
+    permissions:
+      id-token: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -136,6 +136,8 @@ jobs:
   publish-docker:
     needs: [release-please, build-binaries]
     if: needs.release-please.outputs.release_created == 'true'
+    permissions:
+      packages: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
