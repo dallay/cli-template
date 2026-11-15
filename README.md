@@ -53,23 +53,38 @@ The binary will be in `target/release/{{CARGO_NAME}}`.
 ### Prerequisites
 
 - Rust 1.70+ (stable)
-- cargo
+- Make
 
-### Setup
+### Quick Start
 
 ```bash
-# Install dependencies
-cargo build
+# Full setup (install hooks + build)
+make setup
 
-# Run tests
-cargo test
+# Run all checks (fmt + clippy + test)
+make check
 
-# Run clippy
-cargo clippy --all-targets --all-features -- -D warnings
-
-# Format code
-cargo fmt --all
+# Build release binary
+make release
 ```
+
+### Makefile Commands
+
+| Command | Description |
+|---------|-------------|
+| `make setup` | Install dev dependencies and git hooks |
+| `make build` | Build debug binary |
+| `make release` | Build optimized release binary |
+| `make run` | Run the CLI |
+| `make test` | Run all tests |
+| `make lint` | Run clippy with strict warnings |
+| `make fmt` | Format all Rust code |
+| `make check` | Run fmt + lint + test (full CI locally) |
+| `make docker-build` | Build Docker image |
+| `make docker-run` | Run Docker container |
+| `make clean` | Remove build artifacts |
+
+Run `make help` for the full list of commands.
 
 ### Git Hooks
 
@@ -80,6 +95,8 @@ This project uses [lefthook](https://github.com/evilmartians/lefthook) for git h
 cargo install lefthook
 lefthook install
 ```
+
+Or simply run `make hooks-install`.
 
 ## License
 

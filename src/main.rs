@@ -1,5 +1,4 @@
 use clap::{Parser, Subcommand};
-use cli_template::greet;
 
 #[derive(Parser)]
 #[command(name = "cli-template")]
@@ -11,6 +10,9 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
+    /// Display version and system information
+    Version,
+
     /// Greets someone by name
     Greet {
         /// Name of the person to greet
@@ -24,8 +26,15 @@ async fn main() {
     let cli = Cli::parse();
 
     match cli.command {
+        Some(Commands::Version) => {
+            println!("Name: {}", env!("CARGO_PKG_NAME"));
+            println!("Version: {}", env!("CARGO_PKG_VERSION"));
+            println!("Author: {}", env!("CARGO_PKG_AUTHORS"));
+            println!("Target triple: {}", std::env::consts::ARCH);
+            println!("OS: {}", std::env::consts::OS);
+        }
         Some(Commands::Greet { name }) => {
-            let message = greet(&name);
+            let message = cli_template::greet(&name);
             println!("{}", message);
         }
         None => {
