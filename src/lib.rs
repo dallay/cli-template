@@ -1,4 +1,4 @@
-//! {{PROJECT_NAME}} - {{DESCRIPTION}}
+//! CLI Template - A Rust CLI template project
 //!
 //! This is a template for Rust CLI tools.
 
@@ -7,7 +7,7 @@
 /// # Examples
 ///
 /// ```
-/// let message = {{CARGO_NAME}}::greet("World");
+/// let message = cli_template::greet("World");
 /// assert_eq!(message, "Hello, World!");
 /// ```
 pub fn greet(name: &str) -> String {
