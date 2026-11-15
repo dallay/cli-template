@@ -24,7 +24,7 @@ function getBinaryPath(): string {
     throw new Error(`Unsupported platform: ${platform()} ${arch()}`);
   }
 
-  const binaryName = process.platform === "win32" ? "{{CARGO_NAME}}.exe" : "{{CARGO_NAME}}";
+  const binaryName = process.platform === "win32" ? "cli-template.exe" : "cli-template";
   return join(dirname(__filename), "..", "bin", binaryName);
 }
 
@@ -34,7 +34,7 @@ function main() {
     const args = process.argv.slice(2);
     execSync(`${binaryPath} ${args.join(" ")}`, { stdio: "inherit" });
   } catch (error) {
-    console.error("Error running {{CARGO_NAME}}:", error);
+    console.error("Error running cli-template:", error);
     process.exit(1);
   }
 }

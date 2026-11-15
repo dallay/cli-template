@@ -1,12 +1,12 @@
 [package]
-name = "{{CARGO_NAME}}"
+name = "cli-template"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.70"
-description = "{{DESCRIPTION}}"
-authors = ["{{AUTHOR}}"]
+description = "A Rust CLI template project"
+authors = ["Your Name"]
 license = "MIT"
-repository = "https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}"
+repository = "https://github.com/dallay/cli-template"
 keywords = ["cli", "tool"]
 categories = ["command-line-utilities"]
 
@@ -24,9 +24,9 @@ strip = true
 opt-level = 3
 
 [[bin]]
-name = "{{CARGO_NAME}}"
+name = "cli-template"
 path = "src/main.rs"
 
 [lib]
-name = "{{CARGO_NAME}}"
+name = "cli_template"
 path = "src/lib.rs"

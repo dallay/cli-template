@@ -1,0 +1,18 @@
+{
+  "name": "@dallay/cli-template",
+  "version": "0.1.0",
+  "description": "A Rust CLI template project",
+  "main": "src/index.js",
+  "types": "src/index.d.ts",
+  "bin": {
+    "cli-template": "src/index.js"
+  },
+  "optionalDependencies": {
+    "@dallay/cli-template-linux-x64": "0.1.0",
+    "@dallay/cli-template-linux-arm64": "0.1.0",
+    "@dallay/cli-template-darwin-x64": "0.1.0",
+    "@dallay/cli-template-darwin-arm64": "0.1.0",
+    "@dallay/cli-template-win32-x64": "0.1.0"
+  },
+  "license": "MIT"
+}

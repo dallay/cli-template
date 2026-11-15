@@ -64,8 +64,8 @@
   ],
   "extra-files": [
     {
-      "path": "npm/{{CARGO_NAME}}/package.json",
-      "template": "{\n  \"name\": \"{{NPM_SCOPE}}/{{CARGO_NAME}}\",\n  \"version\": \"${version}\",\n  \"description\": \"{{DESCRIPTION}}\",\n  \"main\": \"src/index.js\",\n  \"types\": \"src/index.d.ts\",\n  \"bin\": {\n    \"{{CARGO_NAME}}\": \"src/index.js\"\n  },\n  \"optionalDependencies\": {\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-linux-x64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-linux-arm64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-darwin-x64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-darwin-arm64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-win32-x64\": \"${version}\"\n  },\n  \"license\": \"MIT\"\n}\n"
+      "path": "npm/cli-template/package.json",
+      "template": "{\n  \"name\": \"@dallay/cli-template\",\n  \"version\": \"${version}\",\n  \"description\": \"A Rust CLI template project\",\n  \"main\": \"src/index.js\",\n  \"types\": \"src/index.d.ts\",\n  \"bin\": {\n    \"cli-template\": \"src/index.js\"\n  },\n  \"optionalDependencies\": {\n    \"@dallay/cli-template-linux-x64\": \"${version}\",\n    \"@dallay/cli-template-linux-arm64\": \"${version}\",\n    \"@dallay/cli-template-darwin-x64\": \"${version}\",\n    \"@dallay/cli-template-darwin-arm64\": \"${version}\",\n    \"@dallay/cli-template-win32-x64\": \"${version}\"\n  },\n  \"license\": \"MIT\"\n}\n"
     }
   ]
 }
