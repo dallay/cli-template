@@ -7,8 +7,5 @@ on:
 
 jobs:
   stale:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: dallay/common-actions/.github/workflows/stale.yml@main
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+    uses: dallay/common-actions/.github/workflows/stale.yml@v1
+    secrets: inherit
