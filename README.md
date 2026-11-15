@@ -53,23 +53,40 @@ The binary will be in `target/release/{{CARGO_NAME}}`.
 ### Prerequisites
 
 - Rust 1.70+ (stable)
-- cargo
+- [Make](https://www.gnu.org/software/make/) or [Just](https://just.systems/)
 
-### Setup
+This project includes both a `Makefile` and a `justfile` with the same commands. Use whichever you prefer — `make <command>` or `just <command>`.
+
+### Quick Start
 
 ```bash
-# Install dependencies
-cargo build
+# Full setup (install hooks + build)
+make setup    # or: just setup
 
-# Run tests
-cargo test
+# Run all checks (fmt + clippy + test)
+make check    # or: just check
 
-# Run clippy
-cargo clippy --all-targets --all-features -- -D warnings
-
-# Format code
-cargo fmt --all
+# Build release binary
+make release  # or: just release
 ```
+
+### Build Commands
+
+| Command | Description |
+|---------|-------------|
+| `make setup` / `just setup` | Install dev dependencies and git hooks |
+| `make build` / `just build` | Build debug binary |
+| `make release` / `just release` | Build optimized release binary |
+| `make run` / `just run` | Run the CLI |
+| `make test` / `just test` | Run all tests |
+| `make lint` / `just lint` | Run clippy with strict warnings |
+| `make fmt` / `just fmt` | Format all Rust code |
+| `make check` / `just check` | Run fmt + lint + test (full CI locally) |
+| `make docker-build` / `just docker-build` | Build Docker image |
+| `make docker-run` / `just docker-run` | Run Docker container |
+| `make clean` / `just clean` | Remove build artifacts |
+
+Run `make help` or `just help` for the full list of commands.
 
 ### Git Hooks
 
@@ -80,6 +97,8 @@ This project uses [lefthook](https://github.com/evilmartians/lefthook) for git h
 cargo install lefthook
 lefthook install
 ```
+
+Or simply run `make hooks-install` or `just hooks-install`.
 
 ## License
 
