@@ -31,3 +31,16 @@ AGENTS.md
 
 # AgentSync (internal, not committed)
 .agent-skills/
+# START AI Agent Symlinks
+.agents/skills/*.bak
+.claude/commands/
+.claude/skills
+.github/copilot-instructions.md
+.github/copilot-instructions.md.bak
+.vscode/mcp.json
+/.mcp.json
+/AGENTS.md
+/AGENTS.md.bak
+/CLAUDE.md
+/CLAUDE.md.bak
+# END AI Agent Symlinks
