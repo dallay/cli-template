@@ -13,9 +13,10 @@ We take the security of {{PROJECT_NAME}} seriously. If you discover a security v
 
 ### How to Report
 
-1. **Do NOT** open a public GitHub issue for security vulnerabilities
-2. Send an email to {{AUTHOR_EMAIL}} with the subject line "Security Vulnerability - {{PROJECT_NAME}}"
-3. Include the following information:
+1. **Do NOT** open a public GitHub issue for security vulnerabilities.
+2. **Preferred:** Use [GitHub Private Vulnerability Reporting](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/security/advisories/new) to submit a security advisory directly. This keeps all communication private and encrypted.
+3. **Alternative:** If GitHub Security Advisories is not available, send an email to {{AUTHOR_EMAIL}} with the subject line "Security Vulnerability - {{PROJECT_NAME}}".
+4. Include the following information:
    - Type of vulnerability (e.g., buffer overflow, SQL injection, XSS)
    - Full paths of source file(s) related to the vulnerability
    - The location of the affected source code (tag/branch/commit or direct URL)
