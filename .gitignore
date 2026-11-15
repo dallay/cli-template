@@ -21,6 +21,13 @@ Thumbs.db
 # Node modules
 node_modules/
 
-# AgentSync
-.agents/
+# AI Agent Symlinks
+# AgentSync manages the symlinks below this marker.
+# Do not add or remove entries in this block manually.
+CLAUDE.md
+AGENTS.md
+.github/copilot-instructions.md
+# End AI Agent Symlinks
+
+# AgentSync (internal, not committed)
 .agent-skills/

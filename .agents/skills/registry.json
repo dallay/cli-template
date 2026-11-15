@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "last_updated": "2026-01-01T00:00:00.000000+00:00",
+  "skills": {
+    "rust-async-patterns": {
+      "name": "rust-async-patterns",
+      "version": null,
+      "description": "Master Rust async programming with Tokio, async traits, error handling, and concurrent patterns. Use when the task involves `async Rust`, `Tokio patterns`, `Rust concurrent programming`, `async traits`, or `Rust futures and streams`.",
+      "provider": null,
+      "source": null,
+      "installedAt": null,
+      "files": null,
+      "manifestHash": null
+    },
+    "docker-expert": {
+      "name": "docker-expert",
+      "version": null,
+      "description": "Advanced Docker containerization expert for multi-stage builds, image optimization, security hardening, and Compose orchestration. Use when the task involves `working with Dockerfile`, `docker-compose.yml`, `containerization`, `multi-stage builds`, or `optimizing Docker images`.",
+      "provider": null,
+      "source": null,
+      "installedAt": null,
+      "files": null,
+      "manifestHash": null
+    },
+    "github-actions": {
+      "name": "github-actions",
+      "version": null,
+      "description": "Comprehensive guide for building robust, secure, and efficient CI/CD pipelines using GitHub Actions. Use when the task involves `creating or editing GitHub Actions workflows`, `.github/workflows/*.yml`, `CI/CD pipelines`, `GitHub Actions best practices`, or `workflow optimization`.",
+      "provider": null,
+      "source": null,
+      "installedAt": null,
+      "files": null,
+      "manifestHash": null
+    },
+    "makefile": {
+      "name": "makefile",
+      "version": null,
+      "description": "Best practices for authoring clean, maintainable, and portable GNU Make Makefiles. Use when the task involves `creating or editing Makefiles`, `Makefile`, `makefile`, `*.mk`, `GNUmakefile`, `GNU Make patterns`, `build automation`, or `makefile troubleshooting`.",
+      "provider": null,
+      "source": null,
+      "installedAt": null,
+      "files": null,
+      "manifestHash": null
+    },
+    "pinned-tag": {
+      "name": "pinned-tag",
+      "version": null,
+      "description": "Manage pinned tags and commit SHAs for GitHub Actions security, resolving mutable tags to immutable commit references. Use when the task involves `Unpinned tag for a non-immutable Action`, `pin GitHub Action to commit SHA`, `resolve git tag to SHA`, or `GitHub Actions security hardening`.",
+      "provider": null,
+      "source": null,
+      "installedAt": null,
+      "files": null,
+      "manifestHash": null
+    }
+  }
+}
