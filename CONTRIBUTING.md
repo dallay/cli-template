@@ -12,7 +12,7 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 - [Reporting Bugs](#report-bugs-using-github-issues)
 - [Suggesting Enhancements](#suggest-enhancements-using-github-issues)
 - [Your First Code Contribution](#your-first-code-contribution)
-- [Improve the Documentation](#improve-the-documentation)
+- [Improving The Documentation](#improve-the-documentation)
 
 ## Code of Conduct
 
