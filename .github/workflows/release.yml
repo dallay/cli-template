@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: binaries-${{ matrix.target }}
-          path: target/${{ matrix.target }}/release/{{CARGO_NAME}}${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+          path: target/${{ matrix.target }}/release/cli-template${{ matrix.os == 'windows-latest' && '.exe' || '' }}
           retention-days: 1
 
   upload-assets:
@@ -111,7 +111,7 @@ jobs:
           path: npm-binaries
       - name: Create npm package
         run: |
-          sed "s/{{CARGO_NAME}}/${{ github.event.repository.name }}/g; s/{{NPM_SCOPE}}/${{ secrets.NPM_SCOPE || '@dallay' }}/g; s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g; s/{{OS}}/${{ matrix.npm_os }}/g; s/{{ARCH}}/${{ matrix.npm_arch }}/g" npm/package.json.tmpl > npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/package.json
+          sed "s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g; s/{{OS}}/${{ matrix.npm_os }}/g; s/{{ARCH}}/${{ matrix.npm_arch }}/g" npm/package.json.tmpl > npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/package.json
           mkdir -p npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/bin
           cp npm-binaries/* npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/bin/
           cd npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}
@@ -127,7 +127,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Update base package
         run: |
-          cd npm/{{CARGO_NAME}}
+          cd npm/cli-template
           sed -i "s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g" package.json
           npm publish --access public
         env:

@@ -18,8 +18,8 @@ RUN apk add --no-cache tini
 
 RUN addgroup -g 1000 -S appgroup && adduser -u 1000 -S appuser -G appgroup
 
-COPY --from=builder /app/target/release/{{CARGO_NAME}} /usr/local/bin/
+COPY --from=builder /app/target/release/cli-template /usr/local/bin/
 
 USER appuser
 ENTRYPOINT ["tini", "--"]
-CMD ["{{CARGO_NAME}}"]
+CMD ["cli-template"]
