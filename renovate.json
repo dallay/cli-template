@@ -1,0 +1,39 @@
+{
+  "extends": [
+    "config:recommended"
+  ],
+  "schedule": [
+    "every weekday"
+  ],
+  "semanticCommits": "enabled",
+  "semanticCommitType": "chore",
+  "labels": [
+    "dependencies"
+  ],
+  "packageRules": [
+    {
+      "matchManagers": [
+        "cargo"
+      ],
+      "commitMessageTopic": "Rust dependencies"
+    },
+    {
+      "matchManagers": [
+        "npm"
+      ],
+      "commitMessageTopic": "npm dependencies"
+    },
+    {
+      "matchManagers": [
+        "dockerfile"
+      ],
+      "commitMessageTopic": "Docker base image"
+    },
+    {
+      "matchManagers": [
+        "github-actions"
+      ],
+      "commitMessageTopic": "GitHub Actions"
+    }
+  ]
+}

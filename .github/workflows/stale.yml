@@ -1,0 +1,14 @@
+name: Stale
+
+on:
+  schedule:
+    - cron: "0 0 * * *"
+  workflow_dispatch:
+
+jobs:
+  stale:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dallay/common-actions/.github/workflows/stale.yml@main
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

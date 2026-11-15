@@ -1,0 +1,27 @@
+# Rust
+/target
+**/*.rs.bk
+**/*.rs~
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Build artifacts
+npm/*/dist
+npm/*/*.tsbuildinfo
+
+# Environment
+.env
+.env.local
+
+# AgentSync
+.agents/
+.agent-skills/

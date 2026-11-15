@@ -1,0 +1,32 @@
+[package]
+name = "{{CARGO_NAME}}"
+version = "0.1.0"
+edition = "2021"
+rust-version = "1.70"
+description = "{{DESCRIPTION}}"
+authors = ["{{AUTHOR}} <{{AUTHOR_EMAIL}}">]
+license = "MIT"
+repository = "https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}"
+keywords = ["cli", "tool"]
+categories = ["command-line-utilities"]
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+tokio = { version = "1", features = ["full"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+[profile.release]
+lto = true
+strip = true
+opt-level = 3
+
+[[bin]]
+name = "{{CARGO_NAME}}"
+path = "src/main.rs"
+
+[lib]
+name = "{{CARGO_NAME}}"
+path = "src/lib.rs"

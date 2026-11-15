@@ -1,0 +1,15 @@
+name: Greetings
+
+on:
+  issues:
+    types: [opened]
+  pull_request_target:
+    types: [opened]
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dallay/common-actions/.github/workflows/greetings.yml@main
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}

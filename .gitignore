@@ -1,0 +1,26 @@
+# Build artifacts
+/target
+**/*.rs.bk
+**/*.rs~
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
+
+# Node modules
+node_modules/
+
+# AgentSync
+.agents/
+.agent-skills/

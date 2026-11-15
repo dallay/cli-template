@@ -1,0 +1,71 @@
+{
+  "packages": {
+    ".": {
+      "changelog-path": "CHANGELOG.md",
+      "release-type": "simple",
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false
+    }
+  },
+  "include-component-in-tag": false,
+  "tag-separator": "v",
+  "prerelease": false,
+  "separate-pull-requests": true,
+  "commit-message-type": "chore",
+  "commit-message-scipe": "",
+  "release-search-depth": 200,
+  "changelog-sections": [
+    {
+      "type": "feat",
+      "section": "Features"
+    },
+    {
+      "type": "fix",
+      "section": "Bug Fixes"
+    },
+    {
+      "type": "docs",
+      "section": "Documentation"
+    },
+    {
+      "type": "perf",
+      "section": "Performance Improvements"
+    },
+    {
+      "type": "revert",
+      "section": "Reverts"
+    },
+    {
+      "type": "chore",
+      "section": "Miscellaneous Chores"
+    },
+    {
+      "type": "style",
+      "section": "Styles"
+    },
+    {
+      "type": "refactor",
+      "section": "Code Refactoring"
+    },
+    {
+      "type": "test",
+      "section": "Tests"
+    },
+    {
+      "type": "build",
+      "section": "Build System"
+    },
+    {
+      "type": "ci",
+      "section": "Continuous Integration"
+    }
+  ],
+  "extra-files": [
+    {
+      "path": "npm/{{CARGO_NAME}}/package.json",
+      "template": "{\n  \"name\": \"{{NPM_SCOPE}}/{{CARGO_NAME}}\",\n  \"version\": \"${version}\",\n  \"description\": \"{{DESCRIPTION}}\",\n  \"main\": \"src/index.js\",\n  \"types\": \"src/index.d.ts\",\n  \"bin\": {\n    \"{{CARGO_NAME}}\": \"src/index.js\"\n  },\n  \"optionalDependencies\": {\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-linux-x64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-linux-arm64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-darwin-x64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-darwin-arm64\": \"${version}\",\n    \"{{NPM_SCOPE}}/{{CARGO_NAME}}-win32-x64\": \"${version}\"\n  },\n  \"license\": \"MIT\"\n}\n"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+pre-commit:
+  commands:
+    fmt:
+      run: cargo fmt --all --check
+
+pre-push:
+  commands:
+    clippy:
+      run: cargo clippy --all-targets --all-features -- -D warnings
+    test:
+      run: cargo test --all-features
+
+post-checkout:
+  commands:
+    lefthook-install:
+      run: lefthook install
+
+post-merge:
+  commands:
+    lefthook-install:
+      run: lefthook install
+
+post-rewrite:
+  commands:
+    lefthook-install:
+      run: lefthook install

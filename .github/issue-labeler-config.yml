@@ -1,0 +1,25 @@
+bug:
+  - bug
+  - error
+  - crash
+  - broken
+
+enhancement:
+  - feature
+  - enhancement
+  - improve
+
+documentation:
+  - doc
+  - readme
+  - documentation
+
+dependencies:
+  - dependency
+  - update
+  - bump
+
+question:
+  - question
+  - how
+  - why
