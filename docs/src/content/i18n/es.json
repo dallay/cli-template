@@ -1,0 +1,76 @@
+{
+  "nav": {
+    "previousPage": "Página anterior",
+    "nextPage": "Página siguiente"
+  },
+  "search": {
+    "placeholder": "Buscar"
+  },
+  "sidebar": {
+    "navigationLabel": "Navegación",
+    "expandedLabel": "Expandido"
+  },
+  "i18n": {
+    "translation": "Traducción",
+    "showTranslations": "Mostrar traducciones",
+    "translationSingularSuffix": "",
+    "translationPluralSuffix": "s"
+  },
+  "theme": {
+    "useLight": "Usar tema claro",
+    "useDark": "Usar tema oscuro",
+    "chooseTheme": "Elegir tema",
+    "closeColorOptions": "Cerrar opciones de color"
+  },
+  "appearance": {
+    "label": "Apariencia"
+  },
+  "language": {
+    "label": "Idioma",
+    "closeLanguageOptions": "Cerrar opciones de idioma"
+  },
+  "a11y": {
+    "skipLink": "Saltar al contenido",
+    "logoTitle": "Logo",
+    "sidebar": {
+      "closeButton": "Cerrar barra lateral"
+    },
+    "sidebarNavigation": {
+      "toggleButton": "Alternar navegación de la barra lateral",
+      "toggleButtonVisible": "Mostrar botón de alternar navegación de la barra lateral"
+    },
+    "theme": {
+      "label": "Tema",
+      "useLight": "Usar tema claro",
+      "useDark": "Usar tema oscuro"
+    },
+    "lang": {
+      "label": "Idioma",
+      "closeLanguageOptions": "Cerrar opciones de idioma"
+    }
+  },
+  "404": {
+    "title": "No encontrado",
+    "content": "Esta página no está disponible en ningún idioma.",
+    "link": "Volver a la página principal"
+  },
+  "editor": {
+    "backLink": "Volver",
+    "editLink": "Editar esta página",
+    "filename": "Archivo",
+    "updatedOn": "Actualizado el",
+    "pastedown": {
+      "placeholder": "Escribe para empezar…"
+    }
+  },
+  "footer": {
+    "builtWithStarlight": "Construido con Starlight"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "closeLabel": "Cerrar",
+    "noResults": "Ningún resultado",
+    "searchDisabled": "Búsqueda deshabilitada"
+  }
+}

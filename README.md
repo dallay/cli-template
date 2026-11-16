@@ -3,6 +3,7 @@
 [![CI](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/actions/workflows/ci.yml/badge.svg)](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/actions/workflows/ci.yml)
 [![Release](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/actions/workflows/release.yml/badge.svg)](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/actions/workflows/release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/LICENSE)
+[![Docs](https://img.shields.io/badge/Docs-Starlight-blue.svg)](https://{{REPO_OWNER}}.github.io/{{REPO_NAME}}/)
 [![Crates.io](https://img.shields.io/crates/v/{{CARGO_NAME}}.svg)](https://crates.io/crates/{{CARGO_NAME}})
 [![npm version](https://img.shields.io/npm/v/{{NPM_SCOPE}}/{{CARGO_NAME}}.svg)](https://www.npmjs.com/package/{{NPM_SCOPE}}/{{CARGO_NAME}})
 
@@ -32,6 +33,20 @@ docker pull {{DOCKERHUB_USER}}/{{REPO_NAME}}:latest
 
 Download the latest binary
 from [GitHub Releases](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/releases).
+
+## Documentation
+
+Read the full documentation at <https://{{REPO_OWNER}}.github.io/{{REPO_NAME}}/>.
+
+The documentation site is built with [Starlight](https://starlight.astro.build/) and supports English and Spanish.
+
+### Local Development
+
+```bash
+cd docs
+npm install
+npm run dev
+```
 
 ## Usage
 
@@ -130,4 +145,5 @@ This template includes everything. You can remove components you don't need:
 - **npm distribution**: Remove `npm/` directory and `publish-npm-*` jobs from `release.yml`
 - **Docker**: Remove `Dockerfile`, `.dockerignore`, and `publish-docker` job from `release.yml`
 - **crates.io**: Remove `publish-crates` job from `release.yml`
+- **Documentation site**: Remove `docs/` directory and `deploy-docs.yml` workflow
 - **Community workflows**: Remove workflows from `.github/workflows/` that you don't need

@@ -1,0 +1,85 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  # Trigger on pushes to main
+  push:
+    branches: [main]
+    paths:
+      - "docs/**"
+      - ".github/workflows/deploy-docs.yml"
+  # Allow manual trigger
+  workflow_dispatch:
+
+# Default permissions for all jobs
+permissions:
+  contents: read
+
+# Prevent concurrent deployments
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: docs/package-lock.json
+
+      - name: Install dependencies
+        working-directory: docs
+        run: npm ci
+
+      # Keep manually customized template values; resolve remaining repository tokens.
+      - name: Resolve repository placeholders
+        working-directory: docs
+        env:
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+          const [owner, name] = process.env.REPOSITORY.split('/');
+          const files = ['astro.config.mjs', ...readdirSync('src/content/docs', { recursive: true })
+            .filter((file) => file.endsWith('.md'))
+            .map((file) => `src/content/docs/${file}`)];
+          for (const file of files) {
+            const content = readFileSync(file, 'utf8')
+              .replaceAll('{{REPO_OWNER}}', owner)
+              .replaceAll('{{REPO_NAME}}', name);
+            writeFileSync(file, content);
+          }
+          NODE
+
+      - name: Build site
+        working-directory: docs
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v3
+        with:
+          path: docs/dist
+
+  deploy:
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v4
