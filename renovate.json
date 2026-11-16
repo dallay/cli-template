@@ -12,7 +12,7 @@
   "labels": [
     "dependencies"
   ],
-  "waitDays": 2,
+  "minimumReleaseAge": "2 days",
   "packageRules": [
     {
       "description": "Automerge patch updates for safe dependencies",
