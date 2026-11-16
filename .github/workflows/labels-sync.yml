@@ -2,6 +2,7 @@ name: Sync Labels
 
 permissions:
   contents: read
+  issues: write
 
 on:
   push:
