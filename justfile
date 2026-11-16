@@ -5,7 +5,7 @@ help:
     @echo "Justfile for cli-template"
     @echo ""
     @echo "Targets:"
-    @echo "  just setup           -> install dev dependencies and hooks"
+    @echo "  just setup           -> install dev dependencies, hooks, and docs symlink"
     @echo "  just build           -> cargo build (debug)"
     @echo "  just release         -> cargo build --release (optimized)"
     @echo "  just run             -> cargo run"
@@ -17,6 +17,7 @@ help:
     @echo "  just docker-run      -> run Docker container"
     @echo "  just docker-clean    -> remove Docker image"
     @echo "  just hooks-install   -> install lefthook git hooks"
+    @echo "  just docs       -> create symlink to docs content"
     @echo "  just clean           -> remove target/ and build artifacts"
     @echo ""
     @echo "Examples:"
@@ -26,12 +27,27 @@ help:
 
 ## — Setup —
 
-setup: hooks-install
+setup: hooks-install docs
     @echo "Setup complete."
 
 hooks-install:
     @echo "Installing lefthook git hooks..."
     @if command -v lefthook >/dev/null 2>&1; then lefthook install; else echo "lefthook not found. Install with: cargo install lefthook"; fi
+
+docs:
+    @echo "Creating docs symlink..."
+    @if [ -d "web/src/content/docs" ]; then \
+        if [ -L "docs" ]; then \
+            rm docs || exit 1; \
+        fi; \
+        if [ -e "docs" ]; then \
+            echo "⚠️  docs already exists, preserving it"; \
+        else \
+            ln -s web/src/content/docs docs && echo "✅ docs -> web/src/content/docs"; \
+        fi; \
+    else \
+        echo "⚠️  web/src/content/docs not found, skipping symlink"; \
+    fi
 
 ## — Build —
 
