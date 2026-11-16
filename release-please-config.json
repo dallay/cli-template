@@ -2,7 +2,7 @@
   "packages": {
     ".": {
       "changelog-path": "CHANGELOG.md",
-      "release-type": "simple",
+      "release-type": "rust",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": false,
       "draft": false,
@@ -14,7 +14,7 @@
   "prerelease": false,
   "separate-pull-requests": true,
   "commit-message-type": "chore",
-  "commit-message-scipe": "",
+  "commit-message-scope": "",
   "release-search-depth": 200,
   "changelog-sections": [
     {
@@ -63,9 +63,10 @@
     }
   ],
   "extra-files": [
+    "Cargo.toml",
     {
       "path": "npm/cli-template/package.json",
-      "template": "{\n  \"name\": \"@dallay/cli-template\",\n  \"version\": \"${version}\",\n  \"description\": \"A Rust CLI template project\",\n  \"main\": \"src/index.js\",\n  \"types\": \"src/index.d.ts\",\n  \"bin\": {\n    \"cli-template\": \"src/index.js\"\n  },\n  \"optionalDependencies\": {\n    \"@dallay/cli-template-linux-x64\": \"${version}\",\n    \"@dallay/cli-template-linux-arm64\": \"${version}\",\n    \"@dallay/cli-template-darwin-x64\": \"${version}\",\n    \"@dallay/cli-template-darwin-arm64\": \"${version}\",\n    \"@dallay/cli-template-win32-x64\": \"${version}\"\n  },\n  \"license\": \"MIT\"\n}\n"
+      "template": "{\n  \"name\": \"@dallay/cli-template\",\n  \"version\": \"${version}\",\n  \"description\": \"A Rust CLI template project\",\n  \"main\": \"src/index.js\",\n  \"types\": \"src/index.d.ts\",\n  \"bin\": {\n    \"cli-template\": \"src/index.js\"\n  },\n  \"files\": [\n    \"src\"\n  ],\n  \"scripts\": {\n    \"build\": \"tsc\"\n  },\n  \"optionalDependencies\": {\n    \"@dallay/cli-template-linux-x64\": \"${version}\",\n    \"@dallay/cli-template-linux-arm64\": \"${version}\",\n    \"@dallay/cli-template-darwin-x64\": \"${version}\",\n    \"@dallay/cli-template-darwin-arm64\": \"${version}\",\n    \"@dallay/cli-template-win32-x64\": \"${version}\"\n  },\n  \"devDependencies\": {\n    \"@types/node\": \"^20\",\n    \"typescript\": \"^5\"\n  },\n  \"license\": \"MIT\"\n}\n"
     }
   ]
 }

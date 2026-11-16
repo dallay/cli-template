@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-import {execSync} from "child_process";
-import {dirname, join} from "path";
+import {spawnSync} from "child_process";
+import {join, dirname} from "path";
 import {arch, platform} from "os";
 
 function getBinaryPath(): string {
@@ -24,18 +24,33 @@ function getBinaryPath(): string {
   }
 
   const binaryName = process.platform === "win32" ? "cli-template.exe" : "cli-template";
-  return join(dirname(__filename), "..", "bin", binaryName);
+  const packageName = `@dallay/cli-template-${os}-${cpu}`;
+
+  // Try to resolve the binary from the platform-specific npm package
+  try {
+    const pkgPath = require.resolve(`${packageName}/package.json`, {paths: [__dirname]});
+    const pkgDir = dirname(pkgPath);
+    return join(pkgDir, "bin", binaryName);
+  } catch {
+    throw new Error(
+      `Cannot find binary for ${packageName}. ` +
+      `Please ensure the platform-specific package is installed.`
+    );
+  }
 }
 
 function main() {
-  try {
-    const binaryPath = getBinaryPath();
-    const args = process.argv.slice(2);
-    execSync(`${binaryPath} ${args.join(" ")}`, {stdio: "inherit"});
-  } catch (error) {
-    console.error("Error running cli-template:", error);
-    process.exit(1);
-  }
+  const binaryPath = getBinaryPath();
+  const args = process.argv.slice(2);
+
+  const result = spawnSync(binaryPath, args, {
+    stdio: "inherit",
+    encoding: "utf-8",
+  });
+
+  // Propagate the exit code from the binary
+  const exitCode = result.status ?? 1;
+  process.exit(exitCode);
 }
 
 main();

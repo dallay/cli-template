@@ -22,7 +22,7 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          release-type: simple
+          release-type: rust
 
   build-binaries:
     needs: release-please
@@ -46,8 +46,15 @@ jobs:
       - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca # stable
         with:
           target: ${{ matrix.target }}
+      - name: Install aarch64 cross-compilation tools
+        if: matrix.target == 'aarch64-unknown-linux-gnu'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gcc-aarch64-linux-gnu musl-tools
       - name: Build
         run: cargo build --release --target ${{ matrix.target }}
+        env:
+          CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
       - name: Upload artifact
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
@@ -129,10 +136,15 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
-      - name: Update base package
+      - uses: actions/setup-node@39370e3970a6d050c480ffad4ff0ed4d3fdee5af # v4
+        with:
+          node-version: 20
+      - name: Build and publish base package
         run: |
           cd npm/cli-template
           sed -i "s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g" package.json
+          npm install
+          npm run build
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -191,7 +203,7 @@ jobs:
         run: |
           echo "## 🚀 Release ${{ needs.release-please.outputs.tag_name }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Binaries uploaded to GitHub Release" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Published to crates.io" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Published to npm" >> $GITHUB_STEP_SUMMARY
-          echo "- ✅ Docker image pushed" >> $GITHUB_STEP_SUMMARY
+          echo "- $([ "${{ needs.upload-assets.result }}" = "success" ] && echo "✅" || echo "❌") Binaries uploaded to GitHub Release" >> $GITHUB_STEP_SUMMARY
+          echo "- $([ "${{ needs.publish-crates.result }}" = "success" ] && echo "✅" || echo "❌") Published to crates.io" >> $GITHUB_STEP_SUMMARY
+          echo "- $([ "${{ needs.publish-npm-base.result }}" = "success" ] && echo "✅" || echo "❌") Published to npm" >> $GITHUB_STEP_SUMMARY
+          echo "- $([ "${{ needs.publish-docker.result }}" = "success" ] && echo "✅" || echo "❌") Docker image pushed" >> $GITHUB_STEP_SUMMARY
