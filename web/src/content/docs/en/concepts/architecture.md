@@ -3,7 +3,8 @@ title: "Architecture"
 description: "Understand the project structure and design decisions."
 ---
 
-This page explains the architecture of **{{CARGO_NAME}}** and the design decisions behind the template.
+This page explains the architecture of **{{CARGO_NAME}}** and the design decisions behind the
+template.
 
 ## Project Structure
 
@@ -27,16 +28,20 @@ This page explains the architecture of **{{CARGO_NAME}}** and the design decisio
 
 ### Separation of Concerns
 
-- **`src/main.rs`** — Contains all Clap parsing, CLI argument handling, and the `main()` entry point. This file is the boundary between the CLI interface and the application logic.
-- **`src/lib.rs`** — Contains reusable business logic that can be unit-tested independently of the CLI layer.
+- **`src/main.rs`** — Contains all Clap parsing, CLI argument handling, and the `main()` entry
+  point. This file is the boundary between the CLI interface and the application logic.
+- **`src/lib.rs`** — Contains reusable business logic that can be unit-tested independently of the
+  CLI layer.
 
 ### Async Runtime
 
-The application uses [Tokio](https://tokio.rs/) as its async runtime. The `#[tokio::main]` macro on `main()` provides a multi-threaded runtime by default, enabling concurrent operations.
+The application uses [Tokio](https://tokio.rs/) as its async runtime. The `#[tokio::main]` macro on
+`main()` provides a multi-threaded runtime by default, enabling concurrent operations.
 
 ### Structured Logging
 
-[tracing](https://github.com/tokio-rs/tracing) is used for structured, hierarchical logging. Log levels can be controlled at runtime via the `RUST_LOG` environment variable:
+[tracing](https://github.com/tokio-rs/tracing) is used for structured, hierarchical logging. Log
+levels can be controlled at runtime via the `RUST_LOG` environment variable:
 
 ```bash
 RUST_LOG=debug {{CARGO_NAME}} greet --name "World"
@@ -44,13 +49,13 @@ RUST_LOG=debug {{CARGO_NAME}} greet --name "World"
 
 ## Dependencies
 
-| Dependency         | Purpose                              |
-|--------------------|--------------------------------------|
-| `clap`             | Type-safe CLI argument parsing       |
-| `serde` / `serde_json` | Serialization and deserialization |
-| `tokio`            | Async runtime                        |
-| `tracing`          | Structured logging                   |
-| `tracing-subscriber` | Logging configuration and filtering |
+| Dependency             | Purpose                             |
+|------------------------|-------------------------------------|
+| `clap`                 | Type-safe CLI argument parsing      |
+| `serde` / `serde_json` | Serialization and deserialization   |
+| `tokio`                | Async runtime                       |
+| `tracing`              | Structured logging                  |
+| `tracing-subscriber`   | Logging configuration and filtering |
 
 ## Build Profiles
 
@@ -65,12 +70,12 @@ opt-level = 3     # Maximum optimization
 
 ## Distribution Channels
 
-| Channel    | Description                                    |
-|------------|------------------------------------------------|
-| **Cargo**  | Primary distribution via `cargo install`       |
-| **npm**    | Cross-platform wrapper with pre-built binaries |
-| **Docker** | Multi-stage Alpine-based container image       |
-| **GitHub Releases** | Pre-built binaries for all platforms |
+| Channel             | Description                                    |
+|---------------------|------------------------------------------------|
+| **Cargo**           | Primary distribution via `cargo install`       |
+| **npm**             | Cross-platform wrapper with pre-built binaries |
+| **Docker**          | Multi-stage Alpine-based container image       |
+| **GitHub Releases** | Pre-built binaries for all platforms           |
 
 ## Docker Architecture
 

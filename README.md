@@ -38,7 +38,8 @@ from [GitHub Releases](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/releases)
 
 Read the full documentation at <https://{{REPO_OWNER}}.github.io/{{REPO_NAME}}/>.
 
-The documentation site is built with [Starlight](https://starlight.astro.build/) and supports English and Spanish.
+The documentation site is built with [Starlight](https://starlight.astro.build/) and supports
+English and Spanish.
 
 ### Local Development
 

@@ -3,7 +3,8 @@ title: "Primeros pasos"
 description: "Instala y ejecuta {{CARGO_NAME}} por primera vez."
 ---
 
-Esta guía te lleva a través de la instalación de **{{CARGO_NAME}}** y la ejecución de tu primer comando.
+Esta guía te lleva a través de la instalación de **{{CARGO_NAME}}** y la ejecución de tu primer
+comando.
 
 ## Requisitos Previos
 

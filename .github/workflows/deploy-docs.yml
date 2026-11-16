@@ -3,7 +3,7 @@ name: Deploy Docs to GitHub Pages
 on:
   # Trigger on pushes to main
   push:
-    branches: [main]
+    branches: [ main ]
     paths:
       - "../../web/**"
       - ".github/workflows/deploy-docs.yml"

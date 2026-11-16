@@ -3,7 +3,9 @@ title: "{{PROJECT_NAME}}"
 description: "Documentation for {{PROJECT_NAME}} — a Rust CLI template project."
 ---
 
-Welcome to the **{{PROJECT_NAME}}** documentation. This is a Rust CLI tool built with [Clap](https://github.com/clap-rs/clap) and [Tokio](https://tokio.rs/), designed as a template for building production-ready command-line applications.
+Welcome to the **{{PROJECT_NAME}}** documentation. This is a Rust CLI tool built
+with [Clap](https://github.com/clap-rs/clap) and [Tokio](https://tokio.rs/), designed as a template
+for building production-ready command-line applications.
 
 ## Quick Links
 

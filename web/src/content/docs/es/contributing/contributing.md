@@ -7,7 +7,9 @@ description: "Cómo contribuir a {{PROJECT_NAME}}."
 
 ## Código de Conducta
 
-Este proyecto sigue un [Código de Conducta](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/CODE_OF_CONDUCT.md). Por favor, léelo y cúmplalo.
+Este proyecto sigue
+un [Código de Conducta](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/CODE_OF_CONDUCT.md).
+Por favor, léelo y cúmplalo.
 
 ## Configuración de Desarrollo
 
@@ -91,4 +93,5 @@ lefthook install
 
 ## Licencia
 
-Al contribuir, aceptas que tus contribuciones serán licenciadas bajo la [Licencia MIT](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/LICENSE).
+Al contribuir, aceptas que tus contribuciones serán licenciadas bajo
+la [Licencia MIT](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/LICENSE).

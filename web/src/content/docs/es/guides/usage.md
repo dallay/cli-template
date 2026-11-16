@@ -43,9 +43,9 @@ Saluda a alguien por su nombre:
 
 **Opciones:**
 
-| Banderas    | Corta | Descripción                  | Requerida |
-|-------------|-------|------------------------------|-----------|
-| `--name`    | `-n`  | Nombre de la persona a saludar | Sí      |
+| Banderas | Corta | Descripción                    | Requerida |
+|----------|-------|--------------------------------|-----------|
+| `--name` | `-n`  | Nombre de la persona a saludar | Sí        |
 
 **Salida:**
 
@@ -55,16 +55,16 @@ Hello, Mundo!
 
 ## Opciones Globales
 
-| Banderas      | Corta | Descripción                  |
-|---------------|-------|------------------------------|
-| `--help`      | `-h`  | Imprimir información de ayuda |
-| `--version`   | `-V`  | Imprimir información de versión |
+| Banderas    | Corta | Descripción                     |
+|-------------|-------|---------------------------------|
+| `--help`    | `-h`  | Imprimir información de ayuda   |
+| `--version` | `-V`  | Imprimir información de versión |
 
 ## Variables de Entorno
 
-| Variable           | Descripción                                | Predeterminado |
-|--------------------|--------------------------------------------|----------------|
-| `RUST_LOG`         | Controlar el nivel de registro de tracing  | `info`         |
+| Variable   | Descripción                               | Predeterminado |
+|------------|-------------------------------------------|----------------|
+| `RUST_LOG` | Controlar el nivel de registro de tracing | `info`         |
 
 Ejemplo:
 
@@ -74,10 +74,10 @@ RUST_LOG=debug {{CARGO_NAME}} greet --name "Mundo"
 
 ## Códigos de Salida
 
-| Código | Descripción        |
-|--------|--------------------|
-| `0`    | Éxito              |
-| `1`    | Error general      |
+| Código | Descripción   |
+|--------|---------------|
+| `0`    | Éxito         |
+| `1`    | Error general |
 
 ## Consejos
 

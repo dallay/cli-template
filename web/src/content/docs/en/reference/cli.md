@@ -13,10 +13,10 @@ This page provides the complete reference for all available commands, subcommand
 
 ## Global Options
 
-| Flag        | Short | Description                    |
-|-------------|-------|--------------------------------|
-| `--help`    | `-h`  | Print help information         |
-| `--version` | `-V`  | Print version information      |
+| Flag        | Short | Description               |
+|-------------|-------|---------------------------|
+| `--help`    | `-h`  | Print help information    |
+| `--version` | `-V`  | Print version information |
 
 ## Commands
 
@@ -28,7 +28,8 @@ Display version and system information.
 {{CARGO_NAME}} version
 ```
 
-**Description:** Prints the package name, version, author, target architecture, and operating system.
+**Description:** Prints the package name, version, author, target architecture, and operating
+system.
 
 **Example output:**
 
@@ -50,9 +51,9 @@ Greet someone by name.
 
 **Options:**
 
-| Flag       | Short | Description                    | Required |
-|------------|-------|--------------------------------|----------|
-| `--name`   | `-n`  | Name of the person to greet    | Yes      |
+| Flag     | Short | Description                 | Required |
+|----------|-------|-----------------------------|----------|
+| `--name` | `-n`  | Name of the person to greet | Yes      |
 
 **Examples:**
 
@@ -69,16 +70,16 @@ Hello, World!
 
 ## Environment Variables
 
-| Variable     | Description                          | Default |
-|--------------|--------------------------------------|---------|
-| `RUST_LOG`   | Control the tracing log level. Accepts `trace`, `debug`, `info`, `warn`, `error`. | `info` |
+| Variable   | Description                                                                       | Default |
+|------------|-----------------------------------------------------------------------------------|---------|
+| `RUST_LOG` | Control the tracing log level. Accepts `trace`, `debug`, `info`, `warn`, `error`. | `info`  |
 
 ## Exit Codes
 
-| Code | Description     |
-|------|-----------------|
-| `0`  | Success         |
-| `1`  | General error   |
+| Code | Description   |
+|------|---------------|
+| `0`  | Success       |
+| `1`  | General error |
 
 ## Help Output
 

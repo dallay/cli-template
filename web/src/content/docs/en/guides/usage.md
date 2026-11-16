@@ -43,9 +43,9 @@ Greet someone by name:
 
 **Options:**
 
-| Flag       | Short | Description              | Required |
-|------------|-------|--------------------------|----------|
-| `--name`   | `-n`  | Name of the person to greet | Yes   |
+| Flag     | Short | Description                 | Required |
+|----------|-------|-----------------------------|----------|
+| `--name` | `-n`  | Name of the person to greet | Yes      |
 
 **Output:**
 
@@ -55,16 +55,16 @@ Hello, World!
 
 ## Global Options
 
-| Flag        | Short | Description              |
-|-------------|-------|--------------------------|
-| `--help`    | `-h`  | Print help information   |
+| Flag        | Short | Description               |
+|-------------|-------|---------------------------|
+| `--help`    | `-h`  | Print help information    |
 | `--version` | `-V`  | Print version information |
 
 ## Environment Variables
 
-| Variable             | Description                              | Default |
-|----------------------|------------------------------------------|---------|
-| `RUST_LOG`           | Control tracing log level                | `info`  |
+| Variable   | Description               | Default |
+|------------|---------------------------|---------|
+| `RUST_LOG` | Control tracing log level | `info`  |
 
 Example:
 
@@ -74,10 +74,10 @@ RUST_LOG=debug {{CARGO_NAME}} greet --name "World"
 
 ## Exit Codes
 
-| Code | Description            |
-|------|------------------------|
-| `0`  | Success                |
-| `1`  | General error          |
+| Code | Description   |
+|------|---------------|
+| `0`  | Success       |
+| `1`  | General error |
 
 ## Tips
 

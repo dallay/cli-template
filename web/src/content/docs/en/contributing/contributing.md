@@ -7,7 +7,9 @@ We welcome contributions to **{{PROJECT_NAME}}**! This guide explains how to get
 
 ## Code of Conduct
 
-This project follows a [Code of Conduct](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/CODE_OF_CONDUCT.md). Please read and follow it.
+This project follows
+a [Code of Conduct](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/CODE_OF_CONDUCT.md).
+Please read and follow it.
 
 ## Development Setup
 
@@ -91,4 +93,5 @@ lefthook install
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the [MIT License](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/LICENSE).
+By contributing, you agree that your contributions will be licensed under
+the [MIT License](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/blob/main/LICENSE).

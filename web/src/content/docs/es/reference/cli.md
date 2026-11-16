@@ -3,7 +3,8 @@ title: "Referencia de la CLI"
 description: "Referencia completa de todos los comandos y banderas de {{CARGO_NAME}}."
 ---
 
-Esta página proporciona la referencia completa de todos los comandos, subcomandos y banderas disponibles.
+Esta página proporciona la referencia completa de todos los comandos, subcomandos y banderas
+disponibles.
 
 ## Sinopsis
 
@@ -13,10 +14,10 @@ Esta página proporciona la referencia completa de todos los comandos, subcomand
 
 ## Opciones Globales
 
-| Banderas      | Corta | Descripción                    |
-|---------------|-------|--------------------------------|
-| `--help`      | `-h`  | Imprimir información de ayuda  |
-| `--version`   | `-V`  | Imprimir información de versión |
+| Banderas    | Corta | Descripción                     |
+|-------------|-------|---------------------------------|
+| `--help`    | `-h`  | Imprimir información de ayuda   |
+| `--version` | `-V`  | Imprimir información de versión |
 
 ## Comandos
 
@@ -28,7 +29,8 @@ Muestra información de versión y sistema.
 {{CARGO_NAME}} version
 ```
 
-**Descripción:** Imprime el nombre del paquete, versión, autor, arquitectura objetivo y sistema operativo.
+**Descripción:** Imprime el nombre del paquete, versión, autor, arquitectura objetivo y sistema
+operativo.
 
 **Ejemplo de salida:**
 
@@ -50,9 +52,9 @@ Saluda a alguien por su nombre.
 
 **Opciones:**
 
-| Banderas    | Corta | Descripción                    | Requerida |
-|-------------|-------|--------------------------------|-----------|
-| `--name`    | `-n`  | Nombre de la persona a saludar | Sí        |
+| Banderas | Corta | Descripción                    | Requerida |
+|----------|-------|--------------------------------|-----------|
+| `--name` | `-n`  | Nombre de la persona a saludar | Sí        |
 
 **Ejemplos:**
 
@@ -69,16 +71,16 @@ Hello, Mundo!
 
 ## Variables de Entorno
 
-| Variable     | Descripción                          | Predeterminado |
-|--------------|--------------------------------------|----------------|
-| `RUST_LOG`   | Controlar el nivel de registro de tracing. Acepta `trace`, `debug`, `info`, `warn`, `error`. | `info` |
+| Variable   | Descripción                                                                                  | Predeterminado |
+|------------|----------------------------------------------------------------------------------------------|----------------|
+| `RUST_LOG` | Controlar el nivel de registro de tracing. Acepta `trace`, `debug`, `info`, `warn`, `error`. | `info`         |
 
 ## Códigos de Salida
 
-| Código | Descripción     |
-|--------|-----------------|
-| `0`    | Éxito           |
-| `1`    | Error general   |
+| Código | Descripción   |
+|--------|---------------|
+| `0`    | Éxito         |
+| `1`    | Error general |
 
 ## Salida de Ayuda
 

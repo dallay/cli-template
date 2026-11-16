@@ -3,7 +3,8 @@ title: "Arquitectura"
 description: "Entiende la estructura del proyecto y las decisiones de diseño."
 ---
 
-Esta página explica la arquitectura de **{{CARGO_NAME}}** y las decisiones de diseño detrás de la plantilla.
+Esta página explica la arquitectura de **{{CARGO_NAME}}** y las decisiones de diseño detrás de la
+plantilla.
 
 ## Estructura del Proyecto
 
@@ -27,16 +28,22 @@ Esta página explica la arquitectura de **{{CARGO_NAME}}** y las decisiones de d
 
 ### Separación de Responsabilidades
 
-- **`src/main.rs`** — Contiene todo el parsing de Clap, manejo de argumentos CLI y el punto de entrada `main()`. Este archivo es el límite entre la interfaz CLI y la lógica de la aplicación.
-- **`src/lib.rs`** — Contiene lógica de negocio reutilizable que puede ser probada con unit tests de forma independiente de la capa CLI.
+- **`src/main.rs`** — Contiene todo el parsing de Clap, manejo de argumentos CLI y el punto de
+  entrada `main()`. Este archivo es el límite entre la interfaz CLI y la lógica de la aplicación.
+- **`src/lib.rs`** — Contiene lógica de negocio reutilizable que puede ser probada con unit tests de
+  forma independiente de la capa CLI.
 
 ### Runtime Asíncrono
 
-La aplicación utiliza [Tokio](https://tokio.rs/) como su runtime asíncrono. La macro `#[tokio::main]` en `main()` proporciona un runtime multi-hilo por defecto, permitiendo operaciones concurrentes.
+La aplicación utiliza [Tokio](https://tokio.rs/) como su runtime asíncrono. La macro
+`#[tokio::main]` en `main()` proporciona un runtime multi-hilo por defecto, permitiendo operaciones
+concurrentes.
 
 ### Logging Estructurado
 
-[tracing](https://github.com/tokio-rs/tracing) se utiliza para logging estructurado y jerárquico. Los niveles de registro pueden controlarse en tiempo de ejecución mediante la variable de entorno `RUST_LOG`:
+[tracing](https://github.com/tokio-rs/tracing) se utiliza para logging estructurado y jerárquico.
+Los niveles de registro pueden controlarse en tiempo de ejecución mediante la variable de entorno
+`RUST_LOG`:
 
 ```bash
 RUST_LOG=debug {{CARGO_NAME}} greet --name "Mundo"
@@ -44,13 +51,13 @@ RUST_LOG=debug {{CARGO_NAME}} greet --name "Mundo"
 
 ## Dependencias
 
-| Dependencia        | Propósito                                |
-|--------------------|------------------------------------------|
-| `clap`             | Parsing tipo-safe de argumentos CLI      |
-| `serde` / `serde_json` | Serialización y deserialización       |
-| `tokio`            | Runtime asíncrono                        |
-| `tracing`          | Logging estructurado                     |
-| `tracing-subscriber` | Configuración y filtrado de logging    |
+| Dependencia            | Propósito                           |
+|------------------------|-------------------------------------|
+| `clap`                 | Parsing tipo-safe de argumentos CLI |
+| `serde` / `serde_json` | Serialización y deserialización     |
+| `tokio`                | Runtime asíncrono                   |
+| `tracing`              | Logging estructurado                |
+| `tracing-subscriber`   | Configuración y filtrado de logging |
 
 ## Perfiles de Construcción
 
@@ -65,12 +72,12 @@ opt-level = 3     # Optimización máxima
 
 ## Canales de Distribución
 
-| Canal        | Descripción                                      |
-|--------------|--------------------------------------------------|
-| **Cargo**    | Distribución principal vía `cargo install`       |
-| **npm**      | Wrapper multiplataforma con binarios precompilados |
-| **Docker**   | Imagen de contenedor multi-etapa basada en Alpine |
-| **GitHub Releases** | Binarios precompilados para todas las plataformas |
+| Canal               | Descripción                                        |
+|---------------------|----------------------------------------------------|
+| **Cargo**           | Distribución principal vía `cargo install`         |
+| **npm**             | Wrapper multiplataforma con binarios precompilados |
+| **Docker**          | Imagen de contenedor multi-etapa basada en Alpine  |
+| **GitHub Releases** | Binarios precompilados para todas las plataformas  |
 
 ## Arquitectura Docker
 
