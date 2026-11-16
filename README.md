@@ -145,5 +145,5 @@ This template includes everything. You can remove components you don't need:
 - **npm distribution**: Remove `npm/` directory and `publish-npm-*` jobs from `release.yml`
 - **Docker**: Remove `Dockerfile`, `.dockerignore`, and `publish-docker` job from `release.yml`
 - **crates.io**: Remove `publish-crates` job from `release.yml`
-- **Documentation site**: Remove `docs/` directory and `deploy-docs.yml` workflow
+- **Documentation site**: Remove `web` directory and `deploy-docs.yml` workflow
 - **Community workflows**: Remove workflows from `.github/workflows/` that you don't need

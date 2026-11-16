@@ -17,7 +17,7 @@ help:
     @echo "  just docker-run      -> run Docker container"
     @echo "  just docker-clean    -> remove Docker image"
     @echo "  just hooks-install   -> install lefthook git hooks"
-    @echo "  just docs-link       -> create symlink to docs content"
+    @echo "  just docs       -> create symlink to docs content"
     @echo "  just clean           -> remove target/ and build artifacts"
     @echo ""
     @echo "Examples:"
@@ -27,20 +27,20 @@ help:
 
 ## — Setup —
 
-setup: hooks-install docs-link
+setup: hooks-install docs
     @echo "Setup complete."
 
 hooks-install:
     @echo "Installing lefthook git hooks..."
     @if command -v lefthook >/dev/null 2>&1; then lefthook install; else echo "lefthook not found. Install with: cargo install lefthook"; fi
 
-docs-link:
+docs:
     @echo "Creating docs symlink..."
     @if [ -d "docs/src/content/docs" ]; then \
-        if [ -L "docs-link" ] || [ -d "docs-link" ]; then \
-            rm -rf docs-link; \
+        if [ -L "docs" ] || [ -d "docs" ]; then \
+            rm -rf docs; \
         fi; \
-        ln -s docs/src/content/docs docs-link && echo "✅ docs-link -> docs/src/content/docs"; \
+        ln -s docs/src/content/docs docs && echo "✅ docs -> docs/src/content/docs"; \
     else \
         echo "⚠️  docs/src/content/docs not found, skipping symlink"; \
     fi
