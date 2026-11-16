@@ -70,6 +70,6 @@ Hello, World!
 
 ## Next Steps
 
-- Learn about all available commands in the [Usage](./usage/) guide.
+- Learn about all available commands in the [Usage](../usage/) guide.
 - Understand the project structure in the [Architecture](../../concepts/architecture/) page.
 - Read the complete [CLI Reference](../../reference/cli/).

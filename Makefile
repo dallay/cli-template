@@ -15,7 +15,7 @@ help:
 	@echo "Makefile for {{PROJECT_NAME}}"
 	@echo ""
 	@echo "Targets:"
-	@echo "  make setup           -> install dev dependencies, hooks, and docs symlink"
+	@echo "  make setup           -> install dev dependencies and hooks"
 	@echo "  make build           -> cargo build (debug)"
 	@echo "  make release         -> cargo build --release (optimized)"
 	@echo "  make run             -> cargo run"
@@ -28,7 +28,6 @@ help:
 	@echo "  make docker-run      -> run Docker container"
 	@echo "  make docker-clean    -> remove Docker image"
 	@echo "  make hooks-install   -> install lefthook git hooks"
-	@echo "  make docs-link       -> create symlink to docs content"
 	@echo "  make docs-dev        -> start docs dev server (Starlight)"
 	@echo "  make docs-build      -> build docs site"
 	@echo "  make docs-preview    -> preview built docs site"
@@ -43,7 +42,7 @@ all: setup build
 
 ## — Setup —
 
-setup: hooks-install docs-link
+setup: hooks-install
 	@echo "Setup complete."
 
 hooks-install:
@@ -52,17 +51,6 @@ hooks-install:
 		lefthook install; \
 	else \
 		echo "lefthook not found. Install with: cargo install lefthook"; \
-	fi
-
-docs-link:
-	@echo "Creating docs symlink..."
-	@if [ -d "docs/src/content/docs" ]; then \
-		if [ -L "docs-link" ] || [ -d "docs-link" ]; then \
-			rm -rf docs-link; \
-		fi; \
-		ln -s docs/src/content/docs docs-link && echo "✅ docs-link -> docs/src/content/docs"; \
-	else \
-		echo "⚠️  docs/src/content/docs not found, skipping symlink"; \
 	fi
 
 ## — Build —

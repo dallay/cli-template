@@ -25,9 +25,6 @@ node_modules/
 docs/dist/
 docs/.astro/
 
-# Docs symlink (created by make setup / just setup)
-docs-link
-
 # AI Agent Symlinks
 # AgentSync manages the symlinks below this marker.
 # Do not add or remove entries in this block manually.

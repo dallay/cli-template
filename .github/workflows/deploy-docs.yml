@@ -10,6 +10,10 @@ on:
   # Allow manual trigger
   workflow_dispatch:
 
+# Default permissions for all jobs
+permissions:
+  contents: read
+
 # Prevent concurrent deployments
 concurrency:
   group: pages
@@ -17,8 +21,8 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
     timeout-minutes: 15
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v4
@@ -28,7 +32,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v4
         with:
-          node-version: 22
+          node-version: "22"
           cache: npm
           cache-dependency-path: docs/package-lock.json
 
@@ -36,13 +40,28 @@ jobs:
         working-directory: docs
         run: npm ci
 
-      - name: Build site
+      # Keep manually customized template values; resolve remaining repository tokens.
+      - name: Resolve repository placeholders
         working-directory: docs
         env:
-          SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-          BASE_PATH: /${{ github.event.repository.name }}
-          PROJECT_TITLE: ${{ github.event.repository.name }}
-          GITHUB_REPO_URL: https://github.com/${{ github.repository }}
+          REPOSITORY: ${{ github.repository }}
+        run: |
+          node --input-type=module <<'NODE'
+          import { readFileSync, readdirSync, writeFileSync } from 'node:fs';
+          const [owner, name] = process.env.REPOSITORY.split('/');
+          const files = ['astro.config.mjs', ...readdirSync('src/content/docs', { recursive: true })
+            .filter((file) => file.endsWith('.md'))
+            .map((file) => `src/content/docs/${file}`)];
+          for (const file of files) {
+            const content = readFileSync(file, 'utf8')
+              .replaceAll('{{REPO_OWNER}}', owner)
+              .replaceAll('{{REPO_NAME}}', name);
+            writeFileSync(file, content);
+          }
+          NODE
+
+      - name: Build site
+        working-directory: docs
         run: npm run build
 
       - name: Upload artifact
@@ -51,13 +70,12 @@ jobs:
           path: docs/dist
 
   deploy:
-    needs: build
-    runs-on: ubuntu-latest
     timeout-minutes: 10
     permissions:
-      contents: read
       pages: write
       id-token: write
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
