@@ -5,11 +5,11 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://{{REPO_OWNER}}.github.io",
-  base: "/{{REPO_NAME}}",
+  site: process.env.SITE_URL || "https://{{REPO_OWNER}}.github.io/{{REPO_NAME}}",
+  base: process.env.BASE_PATH || "/{{REPO_NAME}}",
   integrations: [
     starlight({
-      title: "{{PROJECT_NAME}}",
+      title: process.env.PROJECT_TITLE || "{{PROJECT_NAME}}",
       defaultLocale: "en",
       locales: {
         en: { label: "English" },
@@ -19,7 +19,7 @@ export default defineConfig({
         {
           icon: "github",
           label: "GitHub",
-          href: "https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}",
+          href: process.env.GITHUB_REPO_URL || "https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}",
         },
       ],
       sidebar: [

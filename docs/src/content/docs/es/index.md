@@ -7,11 +7,11 @@ Bienvenido a la documentación de **{{PROJECT_NAME}}**. Esta es una herramienta 
 
 ## Enlaces Rápidos
 
-- **Primeros pasos** — instala y ejecuta tu primer comando.
-- **Uso** — conoce los comandos y opciones disponibles.
-- **Arquitectura** — entiende la estructura del proyecto y las decisiones de diseño.
-- **Referencia de la CLI** — referencia completa de todos los comandos y banderas.
-- **Contribuir** — cómo contribuir a este proyecto.
+- [**Primeros pasos**](./guides/getting-started/) — instala y ejecuta tu primer comando.
+- [**Uso**](./guides/usage/) — conoce los comandos y opciones disponibles.
+- [**Arquitectura**](./concepts/architecture/) — entiende la estructura del proyecto y las decisiones de diseño.
+- [**Referencia de la CLI**](./reference/cli/) — referencia completa de todos los comandos y banderas.
+- [**Contribuir**](./contributing/contributing/) — cómo contribuir a este proyecto.
 
 ## Características Principales
 
