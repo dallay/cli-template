@@ -2,6 +2,8 @@ name: Stale
 
 permissions:
   contents: read
+  issues: write
+  pull-requests: write
 
 on:
   schedule:

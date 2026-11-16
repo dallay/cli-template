@@ -2,6 +2,7 @@ name: Issue Labeler
 
 permissions:
   contents: read
+  issues: write
 
 on:
   issues:
