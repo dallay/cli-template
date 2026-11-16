@@ -6,5 +6,5 @@ on:
 
 jobs:
   validate:
-    uses: dallay/common-actions/.github/workflows/semantic-pr.yml@4c43521577e8b33f6147dbd208bdd4515a642abc # v1
+    uses: dallay/common-actions/.github/workflows/semantic-pr.yml@ae3cdbb9ec2a94622a72d984da9254bc70e071dc # v1
     secrets: inherit
