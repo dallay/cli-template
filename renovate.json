@@ -1,6 +1,8 @@
 {
   "extends": [
-    "config:recommended"
+    "config:best-practices",
+    "group:allNonMajor",
+    "group:monorepos"
   ],
   "schedule": [
     "every weekday"
@@ -12,28 +14,59 @@
   ],
   "packageRules": [
     {
+      "description": "Automerge patch updates for safe dependencies",
+      "matchUpdateTypes": [
+        "patch"
+      ],
+      "automerge": true
+    },
+    {
+      "description": "Group Rust non-major dependencies",
       "matchManagers": [
         "cargo"
       ],
-      "commitMessageTopic": "Rust dependencies"
+      "commitMessageTopic": "Rust dependencies",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "Rust dependencies (non-major)"
     },
     {
+      "description": "Group npm non-major dependencies",
       "matchManagers": [
         "npm"
       ],
-      "commitMessageTopic": "npm dependencies"
+      "commitMessageTopic": "npm dependencies",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "npm dependencies (non-major)"
     },
     {
+      "description": "Group Docker non-major updates",
       "matchManagers": [
         "dockerfile"
       ],
-      "commitMessageTopic": "Docker base image"
+      "commitMessageTopic": "Docker base image",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "Docker base image (non-major)"
     },
     {
+      "description": "Group GitHub Actions non-major updates",
       "matchManagers": [
         "github-actions"
       ],
-      "commitMessageTopic": "GitHub Actions"
+      "commitMessageTopic": "GitHub Actions",
+      "matchUpdateTypes": [
+        "minor",
+        "patch"
+      ],
+      "groupName": "GitHub Actions (non-major)"
     }
   ]
 }
