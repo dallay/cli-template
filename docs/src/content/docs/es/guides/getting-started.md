@@ -70,6 +70,6 @@ Hello, Mundo!
 
 ## Próximos Pasos
 
-- Aprende sobre todos los comandos disponibles en la guía de [Uso](./usage).
-- Entiende la estructura del proyecto en la página de [Arquitectura](../concepts/architecture).
-- Lee la [Referencia de la CLI](../reference/cli) completa.
+- Aprende sobre todos los comandos disponibles en la guía de [Uso](../usage/).
+- Entiende la estructura del proyecto en la página de [Arquitectura](../../concepts/architecture/).
+- Lee la [Referencia de la CLI](../../reference/cli/) completa.
