@@ -2,7 +2,9 @@
 
 First off, thanks for taking the time to contribute! ❤️
 
-All types of contributions are encouraged and valued. See the [Table of Contents](#table-of-contents) for different ways to help and details about how this project handles them. Please make sure to read the relevant section before making your contribution.
+All types of contributions are encouraged and valued. See
+the [Table of Contents](#table-of-contents) for different ways to help and details about how this
+project handles them. Please make sure to read the relevant section before making your contribution.
 
 ## Table of Contents
 
@@ -16,15 +18,21 @@ All types of contributions are encouraged and valued. See the [Table of Contents
 
 ## Code of Conduct
 
-This project and everyone participating in it is governed by the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
+This project and everyone participating in it is governed by
+the [Code of Conduct](CODE_OF_CONDUCT.md). By participating, you are expected to uphold this code.
 
 ## I Have a Question
 
-> If you want to ask a question, we assume that you have read the available [Documentation](README.md).
+> If you want to ask a question, we assume that you have read the
+> available [Documentation](README.md).
 
-Before you ask a question, it is best to search for existing [Issues](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues) that might help you. In case you have found a suitable issue and still need clarification, you can write your question in this issue.
+Before you ask a question, it is best to search for
+existing [Issues](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues) that might help you. In
+case you have found a suitable issue and still need clarification, you can write your question in
+this issue.
 
-If you then still feel the need to ask a question and need clarification, we recommend the following:
+If you then still feel the need to ask a question and need clarification, we recommend the
+following:
 
 - Open an [Issue](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues/new).
 - Provide as much context as you can about what you're running into.
@@ -33,15 +41,21 @@ If you then still feel the need to ask a question and need clarification, we rec
 
 ### Legal Matters
 
-When you submit code changes, your submissions are understood to be under the same [MIT License](LICENSE) that covers the project.
+When you submit code changes, your submissions are understood to be under the
+same [MIT License](LICENSE) that covers the project.
 
 ### Report Bugs using GitHub Issues
 
-If you find a bug, please [open an issue](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues/new?template=bug_report.md) with a clear description and steps to reproduce.
+If you find a bug,
+please [open an issue](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues/new?template=bug_report.md)
+with a clear description and steps to reproduce.
 
 ### Suggest Enhancements using GitHub Issues
 
-Enhancement suggestions are tracked as [GitHub Issues](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues). Feel free to [open an issue](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues/new?template=feature_request.md) with a clear description of the feature.
+Enhancement suggestions are tracked
+as [GitHub Issues](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues). Feel free
+to [open an issue](https://github.com/{{REPO_OWNER}}/{{REPO_NAME}}/issues/new?template=feature_request.md)
+with a clear description of the feature.
 
 ### Your First Code Contribution
 
@@ -75,11 +89,13 @@ cargo test
 
 ### Improve the Documentation
 
-This project follows the same documentation conventions. If you notice any typos or missing information, feel free to submit a pull request with the fix.
+This project follows the same documentation conventions. If you notice any typos or missing
+information, feel free to submit a pull request with the fix.
 
 ## Git Commit Conventions
 
-This project follows [Conventional Commits](https://www.conventionalcommits.org/). Use the following prefixes:
+This project follows [Conventional Commits](https://www.conventionalcommits.org/). Use the following
+prefixes:
 
 - `feat:` A new feature
 - `fix:` A bug fix

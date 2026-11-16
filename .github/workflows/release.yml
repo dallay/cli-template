@@ -2,7 +2,7 @@ name: Release
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
 jobs:
   release-please:
@@ -52,7 +52,7 @@ jobs:
           retention-days: 1
 
   upload-assets:
-    needs: [release-please, build-binaries]
+    needs: [ release-please, build-binaries ]
     if: needs.release-please.outputs.release_created == 'true'
     permissions:
       contents: write
@@ -69,7 +69,7 @@ jobs:
           files: artifacts/**/*
 
   publish-crates:
-    needs: [release-please, build-binaries]
+    needs: [ release-please, build-binaries ]
     if: needs.release-please.outputs.release_created == 'true'
     permissions:
       id-token: write
@@ -82,7 +82,7 @@ jobs:
           CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}
 
   publish-npm-binaries:
-    needs: [release-please, build-binaries]
+    needs: [ release-please, build-binaries ]
     if: needs.release-please.outputs.release_created == 'true'
     strategy:
       matrix:
@@ -120,7 +120,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-npm-base:
-    needs: [publish-npm-binaries]
+    needs: [ publish-npm-binaries ]
     if: needs.release-please.outputs.release_created == 'true'
     runs-on: ubuntu-latest
     steps:
@@ -134,7 +134,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-docker:
-    needs: [release-please, build-binaries]
+    needs: [ release-please, build-binaries ]
     if: needs.release-please.outputs.release_created == 'true'
     permissions:
       packages: write
@@ -179,7 +179,7 @@ jobs:
           cache-to: type=gha,mode=max
 
   release-summary:
-    needs: [release-please, upload-assets, publish-crates, publish-npm-base, publish-docker]
+    needs: [ release-please, upload-assets, publish-crates, publish-npm-base, publish-docker ]
     if: always() && needs.release-please.outputs.release_created == 'true'
     runs-on: ubuntu-latest
     steps:

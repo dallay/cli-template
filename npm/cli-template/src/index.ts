@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 
-import { execSync } from "child_process";
-import { dirname, join } from "path";
-import { platform, arch } from "os";
-import { resolve } from "path";
+import {execSync} from "child_process";
+import {dirname, join} from "path";
+import {arch, platform} from "os";
 
 function getBinaryPath(): string {
   const platformMap: Record<string, string> = {
@@ -32,7 +31,7 @@ function main() {
   try {
     const binaryPath = getBinaryPath();
     const args = process.argv.slice(2);
-    execSync(`${binaryPath} ${args.join(" ")}`, { stdio: "inherit" });
+    execSync(`${binaryPath} ${args.join(" ")}`, {stdio: "inherit"});
   } catch (error) {
     console.error("Error running cli-template:", error);
     process.exit(1);
