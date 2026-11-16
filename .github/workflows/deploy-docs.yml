@@ -5,7 +5,7 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "../../web/**"
+      - "web/**"
       - ".github/workflows/deploy-docs.yml"
   # Allow manual trigger
   workflow_dispatch:

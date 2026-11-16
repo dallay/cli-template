@@ -11,14 +11,14 @@ and consistency across all documentation.
 
 ### Architecture Decision Records (ADR)
 
-- Location: `../../web`
+- Location: `docs/adr/`
 - Format: `NNN-short-title.md` (e.g., `001-use-clap-for-cli.md`)
 - Structure: Title, Status, Context, Decision, Consequences
 - Use when: A significant architectural choice is made or needs recording
 
 ### Product Design Records (PDR)
 
-- Location: `../../web`
+- Location: `docs/pdr/`
 - Format: `NNN-short-title.md`
 - Structure: Overview, User Stories, Acceptance Criteria, Design Rationale
 - Use when: A new feature or major change needs product-level documentation

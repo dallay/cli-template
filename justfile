@@ -36,13 +36,17 @@ hooks-install:
 
 docs:
     @echo "Creating docs symlink..."
-    @if [ -d "docs/src/content/docs" ]; then \
-        if [ -L "docs" ] || [ -d "docs" ]; then \
-            rm -rf docs; \
+    @if [ -d "web/src/content/docs" ]; then \
+        if [ -L "docs" ]; then \
+            rm docs || exit 1; \
         fi; \
-        ln -s docs/src/content/docs docs && echo "✅ docs -> docs/src/content/docs"; \
+        if [ -e "docs" ]; then \
+            echo "⚠️  docs already exists, preserving it"; \
+        else \
+            ln -s web/src/content/docs docs && echo "✅ docs -> web/src/content/docs"; \
+        fi; \
     else \
-        echo "⚠️  docs/src/content/docs not found, skipping symlink"; \
+        echo "⚠️  web/src/content/docs not found, skipping symlink"; \
     fi
 
 ## — Build —
