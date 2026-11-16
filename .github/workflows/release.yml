@@ -123,8 +123,8 @@ jobs:
           path: npm-binaries
       - name: Create npm package
         run: |
-          sed "s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g; s/{{OS}}/${{ matrix.npm_os }}/g; s/{{ARCH}}/${{ matrix.npm_arch }}/g" npm/package.json.tmpl > npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/package.json
           mkdir -p npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/bin
+          sed "s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g; s/{{OS}}/${{ matrix.npm_os }}/g; s/{{ARCH}}/${{ matrix.npm_arch }}/g" npm/package.json.tmpl > npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/package.json
           cp npm-binaries/* npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/bin/
           cd npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}
           npm publish --access public
