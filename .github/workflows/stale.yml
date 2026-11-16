@@ -12,5 +12,19 @@ on:
 
 jobs:
   stale:
-    uses: dallay/common-actions/.github/workflows/stale.yml@fd7e882c6c0830f25691684a2978074f9e5b6b6a # v2.9.2
-    secrets: inherit
+    name: Close stale issues/PRs
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/stale@4391f3da665fdf50b6810c1a66712fb9ba21aa93 # v11
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          days-before-stale: 120
+          days-before-close: 60
+          stale-issue-message: "This issue was marked as stale due to inactivity. It will be closed automatically if there are no updates."
+          stale-pr-message: "This PR was marked as stale due to inactivity. It will be closed automatically if there are no updates."
+          close-issue-message: "This issue has been automatically closed due to inactivity."
+          close-pr-message: "This pull request has been automatically closed due to inactivity."
+          stale-issue-label: "stale"
+          stale-pr-label: "stale"
+          exempt-issue-labels: "priority:high,security"
+          exempt-pr-labels: "priority:high,security"

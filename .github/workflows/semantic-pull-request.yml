@@ -10,5 +10,34 @@ on:
 
 jobs:
   validate:
-    uses: dallay/common-actions/.github/workflows/semantic-pr.yml@fd7e882c6c0830f25691684a2978074f9e5b6b6a # v2.9.2
-    secrets: inherit
+    name: Validate PR title
+    runs-on: ubuntu-latest
+    if: ${{ !contains(fromJson('["dependabot[bot]","renovate[bot]"]'), github.actor) }}
+    steps:
+      - uses: amannn/action-semantic-pull-request@2252a14e810aa9b85c2d560bd7070c802206ecf6 # v6
+        id: lint_pr_title
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3
+        if: always() && (steps.lint_pr_title.outputs.error_message != null)
+        continue-on-error: true
+        with:
+          header: pr-title-lint-error
+          message: |
+            Hey there and thank you for opening this pull request!
+
+            We require pull request titles to follow the [Conventional Commits specification](https://www.conventionalcommits.org/en/v1.0.0/) and it looks like your proposed title needs to be adjusted.
+
+            Details:
+
+            ```
+            ${{ steps.lint_pr_title.outputs.error_message }}
+            ```
+
+      - uses: marocchino/sticky-pull-request-comment@5770ad5eb8f42dd2c4f34da00c94c5381e49af88 # v3
+        if: ${{ steps.lint_pr_title.outputs.error_message == null }}
+        continue-on-error: true
+        with:
+          header: pr-title-lint-error
+          delete: true
