@@ -6,5 +6,5 @@ on:
 
 jobs:
   label:
-    uses: dallay/common-actions/.github/workflows/issue-labeler.yml@ae3cdbb9ec2a94622a72d984da9254bc70e071dc # v1
+    uses: dallay/common-actions/.github/workflows/issue-labeler.yml@fd7e882c6c0830f25691684a2978074f9e5b6b6a # v2.9.2
     secrets: inherit
