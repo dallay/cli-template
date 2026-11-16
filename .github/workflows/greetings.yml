@@ -1,5 +1,8 @@
 name: Greetings
 
+permissions:
+  contents: read
+
 on:
   issues:
     types: [ opened ]
