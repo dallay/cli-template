@@ -5,9 +5,11 @@
  * https://starlight.astro.build/guides/i18n/
  */
 
-export const locales = {
+import type {StarlightUserConfig} from "@astrojs/starlight/types";
+
+export const locales: StarlightUserConfig["locales"] = {
   en: {label: "English"},
   es: {label: "Español", lang: "es"},
 };
 
-export const defaultLocale = "en";
+export const defaultLocale: StarlightUserConfig["defaultLocale"] = "en";

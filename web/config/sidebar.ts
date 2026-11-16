@@ -5,8 +5,9 @@
  * Add new groups or items here as the documentation grows.
  */
 
-/** @type {import('@astrojs/starlight').SidebarEntry[]} */
-export const sidebar = [
+import type {SidebarEntry} from "@astrojs/starlight/types";
+
+export const sidebar: SidebarEntry[] = [
   {
     label: "Getting Started",
     translations: {es: "Primeros pasos"},

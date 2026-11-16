@@ -5,7 +5,9 @@
  * Simple Icons library: https://simpleicons.org/
  */
 
-export const social = [
+import type {StarlightUserConfig} from "@astrojs/starlight/types";
+
+export const social: StarlightUserConfig["social"] = [
   {
     icon: "github",
     label: "GitHub",
