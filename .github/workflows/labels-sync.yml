@@ -1,5 +1,8 @@
 name: Sync Labels
 
+permissions:
+  contents: read
+
 on:
   push:
     branches: [ main ]

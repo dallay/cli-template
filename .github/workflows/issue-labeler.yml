@@ -1,5 +1,8 @@
 name: Issue Labeler
 
+permissions:
+  contents: read
+
 on:
   issues:
     types: [ opened, edited ]
