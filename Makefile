@@ -8,7 +8,8 @@ CARGO := cargo
 DOCKER := docker
 
 .PHONY: help all setup build release test lint clippy fmt check clean \
-        docker-build docker-run docker-clean run hooks-install
+        docker-build docker-run docker-clean run hooks-install \
+        docs-dev docs-build docs-preview
 
 help:
 	@echo "Makefile for {{PROJECT_NAME}}"
@@ -27,6 +28,9 @@ help:
 	@echo "  make docker-run      -> run Docker container"
 	@echo "  make docker-clean    -> remove Docker image"
 	@echo "  make hooks-install   -> install lefthook git hooks"
+	@echo "  make docs-dev        -> start docs dev server (Starlight)"
+	@echo "  make docs-build      -> build docs site"
+	@echo "  make docs-preview    -> preview built docs site"
 	@echo "  make clean           -> remove target/ and build artifacts"
 	@echo ""
 	@echo "Examples:"
@@ -96,6 +100,20 @@ docker-run:
 docker-clean:
 	@echo "Removing Docker image..."
 	-$(DOCKER) rmi $(BINARY):latest 2>/dev/null || true
+
+## — Docs —
+
+docs-dev:
+	@echo "Starting docs dev server..."
+	cd docs && npm install && npm run dev
+
+docs-build:
+	@echo "Building docs site..."
+	cd docs && npm install && npm run build
+
+docs-preview:
+	@echo "Previewing docs site..."
+	cd docs && npm install && npm run preview
 
 ## — Cleanup —
 

@@ -1,0 +1,19 @@
+/* Custom styles for {{PROJECT_NAME}} documentation */
+
+/* Code block styling */
+:root {
+  --__sl-color-text-code: #e11d48;
+  --__sl-color-bg-code: #fff1f2;
+}
+
+[data-theme="dark"] {
+  --__sl-color-text-code: #fb7185;
+  --__sl-color-bg-code: #1c1917;
+}
+
+/* Inline code */
+:not(pre) > code {
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.375rem;
+  font-size: 0.875em;
+}
