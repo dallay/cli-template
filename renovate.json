@@ -1,11 +1,11 @@
 {
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:best-practices",
-    "group:allNonMajor",
-    "group:monorepos"
+    "config:best-practices"
   ],
+  "timezone": "Europe/Madrid",
   "schedule": [
-    "every weekday"
+    "* * * * 1-5"
   ],
   "semanticCommits": "enabled",
   "semanticCommitType": "chore",
@@ -13,61 +13,67 @@
     "dependencies"
   ],
   "minimumReleaseAge": "2 days",
+  "separateMinorPatch": true,
   "packageRules": [
     {
-      "description": "Automerge patch updates for safe dependencies",
+      "description": "Automerge stable patch updates for Rust and npm",
+      "matchManagers": [
+        "cargo",
+        "npm"
+      ],
       "matchUpdateTypes": [
         "patch"
       ],
+      "matchCurrentVersion": "!/^0/",
       "automerge": true
     },
     {
-      "description": "Group Rust non-major dependencies",
+      "description": "Group Rust minor dependencies",
       "matchManagers": [
         "cargo"
       ],
-      "commitMessageTopic": "Rust dependencies",
       "matchUpdateTypes": [
-        "minor",
-        "patch"
+        "minor"
       ],
-      "groupName": "Rust dependencies (non-major)"
+      "groupName": "Rust dependencies (minor)"
     },
     {
-      "description": "Group npm non-major dependencies",
+      "description": "Group npm minor dependencies",
       "matchManagers": [
         "npm"
       ],
-      "commitMessageTopic": "npm dependencies",
       "matchUpdateTypes": [
-        "minor",
-        "patch"
+        "minor"
       ],
-      "groupName": "npm dependencies (non-major)"
+      "groupName": "npm dependencies (minor)"
     },
     {
-      "description": "Group Docker non-major updates",
+      "description": "Group Docker minor updates",
       "matchManagers": [
-        "dockerfile"
+        "dockerfile",
+        "docker-compose"
       ],
-      "commitMessageTopic": "Docker base image",
       "matchUpdateTypes": [
-        "minor",
-        "patch"
+        "minor"
       ],
-      "groupName": "Docker base image (non-major)"
+      "groupName": "Docker dependencies (minor)"
     },
     {
-      "description": "Group GitHub Actions non-major updates",
+      "description": "Group GitHub Actions minor updates",
       "matchManagers": [
         "github-actions"
       ],
-      "commitMessageTopic": "GitHub Actions",
       "matchUpdateTypes": [
-        "minor",
-        "patch"
+        "minor"
       ],
-      "groupName": "GitHub Actions (non-major)"
+      "groupName": "GitHub Actions (minor)"
+    },
+    {
+      "description": "Use chore for all dependency updates",
+      "matchPackageNames": [
+        "*"
+      ],
+      "semanticCommitType": "chore"
     }
   ]
 }
