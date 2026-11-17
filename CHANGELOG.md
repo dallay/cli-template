@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/dallay/cli-template/compare/v0.1.1...v0.1.2) (2026-11-17)
+
+
+### Bug Fixes
+
+* **ci:** replace deprecated app-id with client-id in create-github-app-token ([#54](https://github.com/dallay/cli-template/issues/54)) ([aa50146](https://github.com/dallay/cli-template/commit/aa50146718e637a2a0563e393053e6496348cfbd))
+
 ## [0.1.1](https://github.com/dallay/cli-template/compare/v0.1.0...v0.1.1) (2026-11-17)
 
 
