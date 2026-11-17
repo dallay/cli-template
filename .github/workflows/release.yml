@@ -17,6 +17,7 @@ jobs:
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
       tag_name: ${{ steps.release.outputs.tag_name }}
+      version: ${{ steps.release.outputs.version }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5
@@ -56,12 +57,16 @@ jobs:
         run: cargo build --release --target ${{ matrix.target }}
         env:
           CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
+      - name: Set executable permission
+        if: matrix.os != 'windows-latest'
+        run: chmod +x target/${{ matrix.target }}/release/cli-template
       - name: Upload artifact
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7
         with:
           name: binaries-${{ matrix.target }}
           path: target/${{ matrix.target }}/release/cli-template${{ matrix.os == 'windows-latest' && '.exe' || '' }}
           retention-days: 1
+          if-no-files-found: error
 
   upload-assets:
     needs: [ release-please, build-binaries ]
@@ -75,6 +80,8 @@ jobs:
         with:
           pattern: binaries-*
           path: artifacts
+      - name: Set executable permissions
+        run: find artifacts -type f -name 'cli-template' -exec chmod +x {} \;
       - uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
@@ -124,8 +131,9 @@ jobs:
       - name: Create npm package
         run: |
           mkdir -p npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/bin
-          sed "s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g; s/{{OS}}/${{ matrix.npm_os }}/g; s/{{ARCH}}/${{ matrix.npm_arch }}/g" npm/package.json.tmpl > npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/package.json
+          sed "s/{{VERSION}}/${{ needs.release-please.outputs.version }}/g; s/{{OS}}/${{ matrix.npm_os }}/g; s/{{ARCH}}/${{ matrix.npm_arch }}/g" npm/package.json.tmpl > npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/package.json
           cp npm-binaries/* npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/bin/
+          chmod +x npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}/bin/*
           cd npm-${{ matrix.npm_os }}-${{ matrix.npm_arch }}
           npm publish --access public
         env:
@@ -143,7 +151,7 @@ jobs:
       - name: Build and publish base package
         run: |
           cd npm/cli-template
-          sed -i "s/{{VERSION}}/${{ needs.release-please.outputs.tag_name }}/g" package.json
+          sed -i "s/{{VERSION}}/${{ needs.release-please.outputs.version }}/g" package.json
           npm install
           npm run build
           npm publish --access public
