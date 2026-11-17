@@ -13,14 +13,8 @@
   "scripts": {
     "build": "tsc",
     "check:package": "node scripts/check-package.mjs",
-    "prepublishOnly": "npm run build && npm run check:package"
-  },
-  "optionalDependencies": {
-    "@dallay/cli-template-linux-x64": "0.0.0",
-    "@dallay/cli-template-linux-arm64": "0.0.0",
-    "@dallay/cli-template-darwin-x64": "0.0.0",
-    "@dallay/cli-template-darwin-arm64": "0.0.0",
-    "@dallay/cli-template-win32-x64": "0.0.0"
+    "release-package": "node scripts/check-release-package.mjs",
+    "prepublishOnly": "npm run build && npm run check:package && npm run release-package"
   },
   "devDependencies": {
     "@types/node": "26.6.6",

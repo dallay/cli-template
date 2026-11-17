@@ -26,10 +26,8 @@ web/dist/
 web/.astro/
 npm/cli-template/dist/
 
-# The npm wrapper commits no lockfile on purpose: its optionalDependencies point
-# at platform packages that only exist after a release, so any lockfile would make
-# `npm ci` fail. Use `npm install` in npm/cli-template.
-npm/cli-template/package-lock.json
+# The npm wrapper uses `npm ci` in CI. The package-lock.json is committed so CI
+# installs are reproducible. pnpm is not used for this wrapper.
 npm/cli-template/pnpm-lock.yaml
 
 # AI Agent Symlinks
