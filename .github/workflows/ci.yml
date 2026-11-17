@@ -44,3 +44,18 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: dtolnay/rust-toolchain@39008827e6b4319a349e9a42dfc90579dd25f1ca # stable
       - run: cargo test --all-features
+
+  npm-wrapper:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
+        with:
+          node-version: 26
+      - name: Build TypeScript npm wrapper
+        working-directory: npm/cli-template
+        run: |
+          sed -i "s/{{VERSION}}/0.0.0-dev/g" package.json
+          sed -i "s/\"@dallay\/cli-template-\(.*\)\": \"0\.0\.0\"/\"@dallay\/cli-template-\1\": \"0.0.0-dev\"/g; s/\"version\": \"0\.0\.0\"/\"version\": \"0.0.0-dev\"/" package-lock.json
+          npm ci --ignore-scripts
+          npm run build
