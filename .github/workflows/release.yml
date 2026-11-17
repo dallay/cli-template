@@ -85,6 +85,13 @@ jobs:
       contents: write
     runs-on: ubuntu-latest
     steps:
+      - name: Generate GitHub App Token
+        id: app-token
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3
+        with:
+          client-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
       - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8
         with:
@@ -96,6 +103,8 @@ jobs:
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
           files: artifacts/**/*
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}
 
   publish-crates:
     needs: [ release-please, build-binaries ]
@@ -162,6 +171,7 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7
         with:
           node-version: 26
+          registry-url: https://registry.npmjs.org
       - name: Build and publish base package
         run: |
           cd npm/cli-template
