@@ -1,25 +1,26 @@
 {
   "name": "@dallay/cli-template",
-  "version": "{{VERSION}}",
+  "version": "0.0.0",
   "description": "A Rust CLI template project",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": {
-    "cli-template": "src/index.js"
+    "cli-template": "dist/index.js"
   },
   "files": [
-    "src",
-    "package-lock.json"
+    "dist"
   ],
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "check:package": "node scripts/check-package.mjs",
+    "prepublishOnly": "npm run build && npm run check:package"
   },
   "optionalDependencies": {
-    "@dallay/cli-template-linux-x64": "{{VERSION}}",
-    "@dallay/cli-template-linux-arm64": "{{VERSION}}",
-    "@dallay/cli-template-darwin-x64": "{{VERSION}}",
-    "@dallay/cli-template-darwin-arm64": "{{VERSION}}",
-    "@dallay/cli-template-win32-x64": "{{VERSION}}"
+    "@dallay/cli-template-linux-x64": "0.0.0",
+    "@dallay/cli-template-linux-arm64": "0.0.0",
+    "@dallay/cli-template-darwin-x64": "0.0.0",
+    "@dallay/cli-template-darwin-arm64": "0.0.0",
+    "@dallay/cli-template-win32-x64": "0.0.0"
   },
   "devDependencies": {
     "@types/node": "26.6.6",

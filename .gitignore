@@ -21,9 +21,16 @@ Thumbs.db
 # Node modules
 node_modules/
 
-# Docs build output
+# Build output
 web/dist/
 web/.astro/
+npm/cli-template/dist/
+
+# The npm wrapper commits no lockfile on purpose: its optionalDependencies point
+# at platform packages that only exist after a release, so any lockfile would make
+# `npm ci` fail. Use `npm install` in npm/cli-template.
+npm/cli-template/package-lock.json
+npm/cli-template/pnpm-lock.yaml
 
 # AI Agent Symlinks
 # AgentSync manages the symlinks below this marker.
