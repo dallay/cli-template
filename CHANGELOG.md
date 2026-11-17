@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.5](https://github.com/dallay/cli-template/compare/v0.1.4...v0.1.5) (2026-11-17)
+
+
+### Bug Fixes
+
+* address SonarQube security issues and clean dependencies ([#63](https://github.com/dallay/cli-template/issues/63)) ([526e03b](https://github.com/dallay/cli-template/commit/526e03bb78acae59bb77396f31fadc652679661d))
+* **npm:** sync package-lock.json with platform-specific optional dependencies ([#60](https://github.com/dallay/cli-template/issues/60)) ([506fb84](https://github.com/dallay/cli-template/commit/506fb849547f7238625ad4d296defd155986c1e4))
+
 ## [0.1.4](https://github.com/dallay/cli-template/compare/v0.1.3...v0.1.4) (2026-11-17)
 
 
