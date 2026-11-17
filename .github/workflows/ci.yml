@@ -55,7 +55,6 @@ jobs:
       - name: Build TypeScript npm wrapper
         working-directory: npm/cli-template
         run: |
-          sed -i "s/{{VERSION}}/0.0.0-dev/g" package.json
-          sed -i "s/\"@dallay\/cli-template-\(.*\)\": \"0\.0\.0\"/\"@dallay\/cli-template-\1\": \"0.0.0-dev\"/g; s/\"version\": \"0\.0\.0\"/\"version\": \"0.0.0-dev\"/" package-lock.json
-          npm ci --ignore-scripts
+          npm install --ignore-scripts
           npm run build
+          npm run check:package
