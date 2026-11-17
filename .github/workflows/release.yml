@@ -97,8 +97,22 @@ jobs:
         with:
           pattern: binaries-*
           path: artifacts
+      - name: Rename binaries to unique release asset names
+        shell: bash
+        run: |
+          for dir in artifacts/binaries-*/; do
+            target="${dir#artifacts/binaries-}"
+            target="${target%/}"
+            for file in "$dir"*; do
+              case "$file" in
+                *.exe) mv "$file" "artifacts/cli-template-${target}.exe" ;;
+                *) mv "$file" "artifacts/cli-template-${target}" ;;
+              esac
+            done
+            rmdir "$dir"
+          done
       - name: Set executable permissions
-        run: find artifacts -type f -name 'cli-template' -exec chmod +x {} \;
+        run: find artifacts -type f ! -name '*.exe' -exec chmod +x {} \;
       - uses: softprops/action-gh-release@8a0cd651e5b2365bd640854a3fa5dfc70e4875f3 # v3
         with:
           tag_name: ${{ needs.release-please.outputs.tag_name }}
