@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.6](https://github.com/dallay/cli-template/compare/v0.1.5...v0.1.6) (2026-11-17)
+
+
+### Bug Fixes
+
+* **ci:** add GitHub App token generation for CI workflow ([1b46052](https://github.com/dallay/cli-template/commit/1b4605213200a77fdca96c41ac9a2cee5bbb7abe))
+
 ## [0.1.5](https://github.com/dallay/cli-template/compare/v0.1.4...v0.1.5) (2026-11-17)
 
 
