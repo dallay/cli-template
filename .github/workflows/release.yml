@@ -154,7 +154,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   publish-npm-base:
-    needs: [ publish-npm-binaries ]
+    needs: [ release-please, publish-npm-binaries ]
     if: needs.release-please.outputs.release_created == 'true'
     runs-on: ubuntu-latest
     steps:
