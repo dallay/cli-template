@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
-import {spawnSync} from "child_process";
-import {join, dirname} from "path";
-import {arch, platform} from "os";
+import {spawnSync} from "node:child_process";
+import {join, dirname} from "node:path";
+import {arch, platform} from "node:os";
 
 function getBinaryPath(): string {
   const platformMap: Record<string, string> = {
