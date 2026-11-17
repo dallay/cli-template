@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.4](https://github.com/dallay/cli-template/compare/v0.1.3...v0.1.4) (2026-11-17)
+
+
+### Bug Fixes
+
+* **ci:** add setup-node to publish-npm-binaries job ([#58](https://github.com/dallay/cli-template/issues/58)) ([e99be15](https://github.com/dallay/cli-template/commit/e99be159e20723179da180c176b0aac1df7c6019))
+
 ## [0.1.3](https://github.com/dallay/cli-template/compare/v0.1.2...v0.1.3) (2026-11-17)
 
 
