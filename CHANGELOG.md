@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.1.7](https://github.com/dallay/cli-template/compare/v0.1.6...v0.1.7) (2026-11-17)
+
+
+### Bug Fixes
+
+* **ci:** give each release binary a unique asset name ([58ff722](https://github.com/dallay/cli-template/commit/58ff72251868625459da4265707762a6d5e29c87))
+* **npm:** declare node types so the TypeScript wrapper builds ([a4d6562](https://github.com/dallay/cli-template/commit/a4d6562c104d0adf9368ea32cf3680214d448b42))
+
 ## [0.1.6](https://github.com/dallay/cli-template/compare/v0.1.5...v0.1.6) (2026-11-17)
 
 
