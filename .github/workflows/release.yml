@@ -186,14 +186,21 @@ jobs:
         with:
           node-version: 26
           registry-url: https://registry.npmjs.org
-      - name: Build and publish base package
+      - name: Set package version
+        working-directory: npm/cli-template
+        env:
+          VERSION: ${{ needs.release-please.outputs.version }}
         run: |
-          cd npm/cli-template
-          sed -i "s/{{VERSION}}/${{ needs.release-please.outputs.version }}/g" package.json
-          sed -i "s/\"@dallay\/cli-template-\(.*\)\": \"0\.0\.0\"/\"@dallay\/cli-template-\\1\": \"${{ needs.release-please.outputs.version }}\"/g" package-lock.json
-          sed -i "s/\"version\": \"0\.0\.0\"/\"version\": \"${{ needs.release-please.outputs.version }}\"/" package-lock.json
-          npm ci --ignore-scripts
+          npm pkg set version="$VERSION"
+          for pkg in darwin-arm64 darwin-x64 linux-arm64 linux-x64 win32-x64; do
+            npm pkg set "optionalDependencies.@dallay/cli-template-$pkg=$VERSION"
+          done
+      - name: Build and publish base package
+        working-directory: npm/cli-template
+        run: |
+          npm install --ignore-scripts
           npm run build
+          npm run check:package
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
