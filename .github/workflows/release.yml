@@ -64,7 +64,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y gcc-aarch64-linux-gnu musl-tools
       - name: Build
-        run: cargo build --release --target ${{ matrix.target }}
+        run: cargo build --release --locked --target ${{ matrix.target }}
         env:
           CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
       - name: Set executable permission
@@ -186,7 +186,10 @@ jobs:
         with:
           node-version: 26
           registry-url: https://registry.npmjs.org
-      - name: Set package version
+      - name: Install dependencies
+        working-directory: npm/cli-template
+        run: npm ci --ignore-scripts
+      - name: Set package version and platform dependencies
         working-directory: npm/cli-template
         env:
           VERSION: ${{ needs.release-please.outputs.version }}
@@ -195,12 +198,12 @@ jobs:
           for pkg in darwin-arm64 darwin-x64 linux-arm64 linux-x64 win32-x64; do
             npm pkg set "optionalDependencies.@dallay/cli-template-$pkg=$VERSION"
           done
-      - name: Build and publish base package
+      - name: Build, check and publish base package
         working-directory: npm/cli-template
         run: |
-          npm install --ignore-scripts
           npm run build
           npm run check:package
+          npm run release-package
           npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
