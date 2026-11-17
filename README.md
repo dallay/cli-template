@@ -70,38 +70,40 @@ The binary will be in `target/release/{{CARGO_NAME}}`.
 ### Prerequisites
 
 - Rust 1.70+ (stable)
-- Make
+- [Make](https://www.gnu.org/software/make/) or [Just](https://just.systems/)
+
+This project includes both a `Makefile` and a `justfile` with the same commands. Use whichever you prefer — `make <command>` or `just <command>`.
 
 ### Quick Start
 
 ```bash
 # Full setup (install hooks + build)
-make setup
+make setup    # or: just setup
 
 # Run all checks (fmt + clippy + test)
-make check
+make check    # or: just check
 
 # Build release binary
-make release
+make release  # or: just release
 ```
 
-### Makefile Commands
+### Build Commands
 
-| Command             | Description                             |
-|---------------------|-----------------------------------------|
-| `make setup`        | Install dev dependencies and git hooks  |
-| `make build`        | Build debug binary                      |
-| `make release`      | Build optimized release binary          |
-| `make run`          | Run the CLI                             |
-| `make test`         | Run all tests                           |
-| `make lint`         | Run clippy with strict warnings         |
-| `make fmt`          | Format all Rust code                    |
-| `make check`        | Run fmt + lint + test (full CI locally) |
-| `make docker-build` | Build Docker image                      |
-| `make docker-run`   | Run Docker container                    |
-| `make clean`        | Remove build artifacts                  |
+| Command | Description |
+|---------|-------------|
+| `make setup` / `just setup` | Install dev dependencies and git hooks |
+| `make build` / `just build` | Build debug binary |
+| `make release` / `just release` | Build optimized release binary |
+| `make run` / `just run` | Run the CLI |
+| `make test` / `just test` | Run all tests |
+| `make lint` / `just lint` | Run clippy with strict warnings |
+| `make fmt` / `just fmt` | Format all Rust code |
+| `make check` / `just check` | Run fmt + lint + test (full CI locally) |
+| `make docker-build` / `just docker-build` | Build Docker image |
+| `make docker-run` / `just docker-run` | Run Docker container |
+| `make clean` / `just clean` | Remove build artifacts |
 
-Run `make help` for the full list of commands.
+Run `make help` or `just help` for the full list of commands.
 
 ### Git Hooks
 
@@ -113,7 +115,7 @@ cargo install lefthook
 lefthook install
 ```
 
-Or simply run `make hooks-install`.
+Or simply run `make hooks-install` or `just hooks-install`.
 
 ## License
 
@@ -138,6 +140,13 @@ When using this template, replace the following placeholders:
 | `{{REPO_NAME}}`      | Repository name             | "my-tool"           |
 | `{{DOCKERHUB_USER}}` | Docker Hub username         | "yacosta738"        |
 | `{{DESCRIPTION}}`    | Short description           | "A CLI tool for..." |
+
+The documentation site resolves its tokens at build time from `template.config.json`,
+`Cargo.toml`, `npm/cli-template/package.json`, and the `GITHUB_REPOSITORY` environment
+variable. The file `template.config.json` holds the three values that cannot be derived
+automatically: `projectName`, `author`, and `dockerhubUser`. When building docs locally
+with `make docs-build`, the working tree is restored automatically afterwards. If you use
+`make docs-dev`, run `make docs-restore` when you are done to restore the template tokens.
 
 ## Optional Components
 
