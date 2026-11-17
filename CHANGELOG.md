@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/dallay/cli-template/compare/v0.1.8...v0.2.0) (2026-11-17)
+
+
+### Features
+
+* improve template documentation, build tools, and docs scripting ([#69](https://github.com/dallay/cli-template/issues/69)) ([54ece03](https://github.com/dallay/cli-template/commit/54ece0336b569a6201031abeb959220a12db7616))
+
+
+### Bug Fixes
+
+* **ci:** close SonarCloud quality gate findings ([#67](https://github.com/dallay/cli-template/issues/67)) ([851b0a8](https://github.com/dallay/cli-template/commit/851b0a8b15b65807cc1708598f375796eb561e53))
+
 ## [0.1.8](https://github.com/dallay/cli-template/compare/v0.1.7...v0.1.8) (2026-11-17)
 
 
