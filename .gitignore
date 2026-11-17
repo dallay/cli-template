@@ -24,6 +24,7 @@ node_modules/
 # Build output
 web/dist/
 web/.astro/
+web/.placeholder-backup/
 npm/cli-template/dist/
 
 # The npm wrapper uses `npm ci` in CI. The package-lock.json is committed so CI
