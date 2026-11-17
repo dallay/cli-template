@@ -166,6 +166,8 @@ jobs:
         run: |
           cd npm/cli-template
           sed -i "s/{{VERSION}}/${{ needs.release-please.outputs.version }}/g" package.json
+          sed -i "s/\"@dallay\/cli-template-\(.*\)\": \"0\.0\.0\"/\"@dallay\/cli-template-\\1\": \"${{ needs.release-please.outputs.version }}\"/g" package-lock.json
+          sed -i "s/\"version\": \"0\.0\.0\"/\"version\": \"${{ needs.release-please.outputs.version }}\"/" package-lock.json
           npm ci --ignore-scripts
           npm run build
           npm publish --access public
