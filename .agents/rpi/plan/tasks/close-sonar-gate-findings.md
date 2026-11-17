@@ -68,16 +68,35 @@ este cambio.
 
 ## Evidencia del análisis nuevo (PR #67)
 
-- Rama `fix/sonarcloud-quality-gate-findings`, commit `9af8c0c`, PR #67: https://github.com/dallay/cli-template/pull/67
-- Quality Gate del PR: `OK`. Condiciones: `new_reliability_rating=1`, `new_security_rating=1`,
-  `new_maintainability_rating=1`, `new_duplicated_lines_density=0.0`,
+- Rama `fix/sonarcloud-quality-gate-findings`, PR #67: https://github.com/dallay/cli-template/pull/67
+- Commits del PR: `9af8c0c` (fix de Sonar), `c17e8a3` (evidencia RPI), `e13a702`
+  (`cargo check --locked` en el job `check`, aplicado por CodeRabbit sobre la rama).
+- Quality Gate del PR en `e13a702`: `OK`. Condiciones: `new_reliability_rating=1`,
+  `new_security_rating=1`, `new_maintainability_rating=1`, `new_duplicated_lines_density=0.0`,
   `new_security_hotspots_reviewed=100.0`; todas en `OK` frente a sus umbrales.
 - Búsqueda de issues del PR con estados `OPEN` y `ACCEPTED`: `total=0`. Ninguna de las 6 findings
   originales sigue abierta y ninguna se aceptó como excepción.
+- Consulta dirigida por las 5 reglas originales (`githubactions:S8543`, `githubactions:S8549`,
+  `docker:S8549`, `javascript:S4036`, `text:S8564`) sobre el PR: `total=0`.
 - Check `SonarCloud Code Analysis` del PR: `SUCCESS`.
-- CI del PR: `check`, `fmt`, `clippy`, `test (ubuntu-latest)`, `test (windows-latest)` y `npm-wrapper`
-  en `SUCCESS`. `test (macos-latest)`, `Analyze (rust)` y `CodeRabbit` en curso al momento de
-  registrar esta evidencia.
+- CI del PR en `e13a702`: todos los checks en `SUCCESS`, incluidos `check`, `fmt`, `clippy`,
+  `test (ubuntu-latest)`, `test (macos-latest)`, `test (windows-latest)` y `npm-wrapper`.
+
+### Code smells residuales
+
+El análisis del PR reporta 2 code smells `docker:S8431` ("use either the version tag or the digest
+for the image instead of both") en las líneas 2 y 12 del `Dockerfile`. Son preexistentes en
+`main` — aparecen idénticos en el análisis del PR #56, ya mergeado — y no provienen de este
+cambio: este PR solo añadió `--locked` a la línea 9. No afectan el Quality Gate
+(`new_maintainability_rating=1`) ni el criterio de cierre.
+
+### Gate de `main`
+
+`main` sigue en `ERROR` con `new_security_rating=3` porque aún contiene las 6 findings originales
+en código nuevo. La verificación de issues en `main` confirma que las 6 siguen abiertas ahí
+(`githubactions:S8543` en `ci.yml` y `release.yml`, `githubactions:S8549` en `release.yml`,
+`docker:S8549` en `Dockerfile`, `javascript:S4036` en `check-package.mjs`, `text:S8564` en
+`npm/cli-template/package.json`). El merge de este PR es lo que cierra ese gate.
 
 ## Estado
 
