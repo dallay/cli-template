@@ -24,7 +24,7 @@ Quitar del manifiesto versionado las cinco `optionalDependencies` placeholder `0
 - [x] RPI-002 — Quitar placeholders, generar el lockfile; cambiar las instalaciones de CI/release a `npm ci` y ordenar release antes de inyectar metadatos.
 - [x] RPI-003 — Eliminar dependencia de `PATH` en la comprobación del tarball y proteger la publicación con las cinco dependencias de plataforma.
 - [x] RPI-004 — Revisar diff y ejecutar verificaciones Rust, npm, Docker y de workflows.
-- [ ] RPI-005 — Reconsultar SonarCloud después de un análisis nuevo; no afirmar el cierre del gate antes de tener esa evidencia. Requiere commit selectivo, push de una rama y PR para activar el análisis automático.
+- [x] RPI-005 — Reconsultar SonarCloud después de un análisis nuevo; no afirmar el cierre del gate antes de tener esa evidencia. Requiere commit selectivo, push de una rama y PR para activar el análisis automático.
 
 ## Criterios de aceptación
 
@@ -66,7 +66,21 @@ Riesgo residual: si alguien cambia `release-type` a `node`, la plantilla entrar�
 publicaría un paquete roto (`src` en vez de `dist`). Queda como recomendación fuera del alcance de
 este cambio.
 
+## Evidencia del análisis nuevo (PR #67)
+
+- Rama `fix/sonarcloud-quality-gate-findings`, commit `9af8c0c`, PR #67: https://github.com/dallay/cli-template/pull/67
+- Quality Gate del PR: `OK`. Condiciones: `new_reliability_rating=1`, `new_security_rating=1`,
+  `new_maintainability_rating=1`, `new_duplicated_lines_density=0.0`,
+  `new_security_hotspots_reviewed=100.0`; todas en `OK` frente a sus umbrales.
+- Búsqueda de issues del PR con estados `OPEN` y `ACCEPTED`: `total=0`. Ninguna de las 6 findings
+  originales sigue abierta y ninguna se aceptó como excepción.
+- Check `SonarCloud Code Analysis` del PR: `SUCCESS`.
+- CI del PR: `check`, `fmt`, `clippy`, `test (ubuntu-latest)`, `test (windows-latest)` y `npm-wrapper`
+  en `SUCCESS`. `test (macos-latest)`, `Analyze (rust)` y `CodeRabbit` en curso al momento de
+  registrar esta evidencia.
+
 ## Estado
 
-Working — implementación y validación local completas. Falta el análisis SonarCloud nuevo
-(RPI-005), que requiere commit selectivo, push de una rama y PR.
+Ready — las seis findings están cerradas sin excepciones, verificadas por un análisis nuevo con
+Quality Gate `OK` y cero issues `OPEN`/`ACCEPTED`. El PR #67 queda abierto para revisión y merge.
+Los cambios de documentación del usuario permanecen sin commitear y fuera del PR.
