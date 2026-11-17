@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.1.1](https://github.com/dallay/cli-template/compare/v0.1.0...v0.1.1) (2026-11-17)
+
+
+### Bug Fixes
+
+* address critical review findings ([#52](https://github.com/dallay/cli-template/issues/52)) ([5dc96f9](https://github.com/dallay/cli-template/commit/5dc96f982f5c0de61c1e0301a0fc011d940ef32b))
+* **ci:** create npm package directory before writing package.json ([#46](https://github.com/dallay/cli-template/issues/46)) ([623c12f](https://github.com/dallay/cli-template/commit/623c12ff8ced6865bec173c54c3d2e806cda1584))
+* **ci:** use GitHub App token for release-please to trigger CI workflows ([#53](https://github.com/dallay/cli-template/issues/53)) ([a6eea20](https://github.com/dallay/cli-template/commit/a6eea2095ac11bddb1fcc54d81b3fdb20c9451e6))
+* **deps:** replace deprecated waitDays with minimumReleaseAge in Renovate config ([#42](https://github.com/dallay/cli-template/issues/42)) ([5c48a20](https://github.com/dallay/cli-template/commit/5c48a20feae1d326c722880a3dcf4d5ca4fe6cda))
+* **deps:** update npm dependencies to ^0.43.0 ([#47](https://github.com/dallay/cli-template/issues/47)) ([acbb493](https://github.com/dallay/cli-template/commit/acbb4933faa8e11c53f4d457721e8a4b3cbadc78))
+* optimize Renovate configuration ([#51](https://github.com/dallay/cli-template/issues/51)) ([b08124a](https://github.com/dallay/cli-template/commit/b08124af6163f7973c48278bca3104333988f78f))
+
 ## 0.1.0 (2026-11-16)
 
 
