@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.8](https://github.com/dallay/cli-template/compare/v0.1.7...v0.1.8) (2026-11-17)
+
+
+### Bug Fixes
+
+* **npm:** build the wrapper into dist and ship only the build ([d2a5417](https://github.com/dallay/cli-template/commit/d2a5417d040b365587310bf2d5a34480c88e48ed))
+
 ## [0.1.7](https://github.com/dallay/cli-template/compare/v0.1.6...v0.1.7) (2026-11-17)
 
 
