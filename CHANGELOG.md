@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/dallay/cli-template/compare/v0.1.2...v0.1.3) (2026-11-17)
+
+
+### Bug Fixes
+
+* resolve 13 SonarCloud issues ([#56](https://github.com/dallay/cli-template/issues/56)) ([b2d3dd1](https://github.com/dallay/cli-template/commit/b2d3dd15d0709c5302dc13f98c6820ac78672a84))
+
 ## [0.1.2](https://github.com/dallay/cli-template/compare/v0.1.1...v0.1.2) (2026-11-17)
 
 
